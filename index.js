@@ -1,5 +1,15 @@
 import express from "express";
 
+/** @type {name: String, version: String, description: String}
+ * @description This is the application data.
+ * @author Piyush97
+ * @version 0.0.1
+ */
+const AppData = {
+  name: "0xZ3ST",
+  version: "0.0.1",
+  description: `The Treasure hunt with Metaverse flavour.`,
+};
 /** @type {Express}
  *  @description The express application.
  *  @see {@link https://expressjs.com/en/4x/api.html#express}
@@ -23,14 +33,9 @@ app.set("view engine", "ejs");
 /**
  * @description The main route of the application.
  * @see {@link https://expressjs.com/en/4x/api.html#app.get}
- *
  */
 app.get("/", function (req, res) {
-  res.render("pages/index", {
-    name: "0xZ3ST",
-    version: "0.0.1",
-    description: `The Treasure hunt with Metaverse flavour.`,
-  });
+  res.render("pages/index", AppData);
 });
 
 /**
