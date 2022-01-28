@@ -1,0 +1,30 @@
+{
+  "name": "oxz3st",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyush97/0xZ3ST.git"
+  },
+  "author": "Piyush Mehta <me@piyushmehta.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/piyush97/0xZ3ST/issues"
+  },
+  "homepage": "https://github.com/piyush97/0xZ3ST#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "type": "module"
+}
+
