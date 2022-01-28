@@ -33,10 +33,9 @@ app.get("/", function (req, res) {
   });
 });
 
-/**   
+/**
  * @description Port listening on the specified port.
  * @see {@link https://expressjs.com/en/4x/api.html#app.listen}
-
  */
 app.listen(PORT, function () {
   console.log("Server started on port " + PORT + " 🚀");
