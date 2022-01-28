@@ -13,10 +13,18 @@ const app = express();
  */
 const PORT = process.env.PORT || 3000;
 
-// view engine to ejs
+/**
+ * @description VIEW ENGINE SETUP WITH EJS
+ * @see {@link https://ejs.co/}
+ * @see {@link https://expressjs.com/en/4x/api.html#express.static}
+ */
 app.set("view engine", "ejs");
 
-// Initial routing
+/**
+ * @description The main route of the application.
+ * @see {@link https://expressjs.com/en/4x/api.html#app.get}
+ *
+ */
 app.get("/", function (req, res) {
   res.render("pages/index", {
     name: "0xZ3ST",
@@ -25,6 +33,11 @@ app.get("/", function (req, res) {
   });
 });
 
+/**   
+ * @description Port listening on the specified port.
+ * @see {@link https://expressjs.com/en/4x/api.html#app.listen}
+
+ */
 app.listen(PORT, function () {
   console.log("Server started on port " + PORT + " 🚀");
 });
