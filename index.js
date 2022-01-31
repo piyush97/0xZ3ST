@@ -39,6 +39,13 @@ app.get("/", function (req, res) {
 });
 
 /**
+ * @description The onboarding route of the application.
+ */
+app.get("/signup", function (req, res) {
+  res.render("pages/signup");
+});
+
+/**
  * @description Port listening on the specified port.
  * @see {@link https://expressjs.com/en/4x/api.html#app.listen}
  */
