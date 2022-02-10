@@ -42,7 +42,15 @@ app.get("/", function (req, res) {
  * @description The onboarding route of the application.
  */
 app.get("/signup", function (req, res) {
-  res.render("pages/signup");
+  res.render("pages/signup", AppData);
+});
+
+app.get("/signin", function (req, res) {
+  res.render("pages/signin", AppData);
+});
+
+app.get("/play", function (req, res) {
+  res.render("pages/play");
 });
 
 /**
