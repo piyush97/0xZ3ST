@@ -45,10 +45,16 @@ app.get("/signup", function (req, res) {
   res.render("pages/signup", AppData);
 });
 
+/**
+ * @description The sign in route of the application.
+ */
 app.get("/signin", function (req, res) {
   res.render("pages/signin", AppData);
 });
 
+/**
+ * @description The game route of the application.
+ */
 app.get("/play", function (req, res) {
   res.render("pages/play");
 });
