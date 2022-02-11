@@ -56,7 +56,7 @@ app.get("/signin", function (req, res) {
  * @description The game route of the application.
  */
 app.get("/play", function (req, res) {
-  res.render("pages/play");
+  res.render("pages/play", AppData);
 });
 
 /**
