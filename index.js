@@ -30,14 +30,6 @@ const PORT = process.env.PORT || 3000;
  */
 app.set("view engine", "ejs");
 
-// /**
-//  * @description The main route of the application.
-//  * @see {@link https://expressjs.com/en/4x/api.html#app.get}
-//  */
-// app.get("/", function (req, res) {
-//   res.render("pages/index", AppData);
-// });
-
 /**
  * @description The onboarding route of the application.
  */
