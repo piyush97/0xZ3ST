@@ -30,13 +30,13 @@ const PORT = process.env.PORT || 3000;
  */
 app.set("view engine", "ejs");
 
-/**
- * @description The main route of the application.
- * @see {@link https://expressjs.com/en/4x/api.html#app.get}
- */
-app.get("/", function (req, res) {
-  res.render("pages/index", AppData);
-});
+// /**
+//  * @description The main route of the application.
+//  * @see {@link https://expressjs.com/en/4x/api.html#app.get}
+//  */
+// app.get("/", function (req, res) {
+//   res.render("pages/index", AppData);
+// });
 
 /**
  * @description The onboarding route of the application.
@@ -53,9 +53,10 @@ app.get("/signin", function (req, res) {
 });
 
 /**
- * @description The game route of the application.
+ * @description The main route of the application.
+ * @see {@link https://expressjs.com/en/4x/api.html#app.get}
  */
-app.get("/play", function (req, res) {
+app.get("/", function (req, res) {
   res.render("pages/play", AppData);
 });
 
