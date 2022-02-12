@@ -1,11 +1,11 @@
 import express from "express";
-
+import {signInUsers} from "./config/firebase.js";
 /** @type {name: String, version: String, description: String}
  * @description This is the application data.
  * @author Piyush97
  * @version 0.0.1
  */
-const AppData = {
+const appData = {
   name: "0xZ3ST",
   version: "0.0.1",
   description: `The Treasure hunt with Metaverse flavour.`,
@@ -34,14 +34,14 @@ app.set("view engine", "ejs");
  * @description The onboarding route of the application.
  */
 app.get("/signup", function (req, res) {
-  res.render("pages/signup", AppData);
+  res.render("pages/signup", {data:{appData:appData,signInUsers:signInUsers}});
 });
 
 /**
  * @description The sign in route of the application.
  */
 app.get("/signin", function (req, res) {
-  res.render("pages/signin", AppData);
+  res.render("pages/signin", {data:{appData:appData,signInUsers:signInUsers}});
 });
 
 /**
@@ -49,7 +49,7 @@ app.get("/signin", function (req, res) {
  * @see {@link https://expressjs.com/en/4x/api.html#app.get}
  */
 app.get("/", function (req, res) {
-  res.render("pages/play", AppData);
+  res.render("pages/play", {data:{appData:appData,signInUsers:signInUsers}});
 });
 
 /**
