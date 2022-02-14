@@ -2,87 +2,45 @@
 <html>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="aframe-arjs.js"></script>
   <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
   <!-- events -->
   <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
 
   <body style="margin: 0px; overflow: hidden">
-    <a-scene embedded arjs>
+    <a-scene
+      embedded
+      arjs
+      cursor="rayOrigin: mouse; fuse: false"
+      raycaster="objects: .raycastable"
+    >
       <a-marker preset="hiro">
         <!-- <a-sphere class="clickable"
                             shadow
                             change-color-on-hover="color: blue">
                   </a-sphere> -->
         <a-text
-          position="10 -.1 -1"
+          position="0 0 0"
           rotation="-90 0 0"
-          value="What is your name?"
+          value="Which is the famous library in Uwindsor?"
+          material="color: #ffffff;transparent: true; opacity: 0.1;"
+          width="2"
+          height="1"
+          align="center"
+        ></a-text>
+        <a-text
+          position="0 1 0"
+          rotation="-90 0 0"
+          value="Leddy library"
           geometry="primitive:plane;"
-        ></a-text>
-        <a-text
-          value="U Winsor"
+          material="color: #ffffff;transparent: true; opacity: 0.1;"
+          width="2"
+          height="1"
           class="clickable"
-          position="0 -.01 -1"
-          rotation="-90 0 0"
-          geometry="primitive:plane"
+          align="center"
         ></a-text>
-        <a-text
-          value="St Clair"
-          rotation="-90 0 0"
-          class="clickable2"
-          geometry="primitive:plane"
-        ></a-text>
-        <!-- <a-entity text-geometry="value: Hello, world!; font: #exoFont;"
-                            material="color: yellow; src: #pixels; repeat: 0.5 0.5;"
-                            rotation="-90 0 0">
-                  </a-entity> -->
       </a-marker>
-      <a-marker preset="kanji">
-        <!-- <a-sphere class="clickable"
-                            shadow
-                            change-color-on-hover="color: blue">
-                  </a-sphere> -->
-        <a-text
-          position="10 -.1 -1"
-          rotation="-90 0 0"
-          value="What is your name?"
-          geometry="primitive:plane;"
-        ></a-text>
-        <a-text
-          value="Windsor"
-          class="clickable"
-          position="0 -.01 -1"
-          rotation="-90 0 0"
-          geometry="primitive:plane"
-        ></a-text>
-        <a-text
-          value="Detroit"
-          rotation="-90 0 0"
-          class="clickable2"
-          geometry="primitive:plane"
-        ></a-text>
-        <!-- <a-entity text-geometry="value: Hello, world!; font: #exoFont;"
-                            material="color: yellow; src: #pixels; repeat: 0.5 0.5;"
-                            rotation="-90 0 0">
-                  </a-entity> -->
-      </a-marker>
-      <a-entity camera cursor="rayOrigin:mouse" look-controls>
-        <!-- working cursor -->
-        <a-entity
-          look-controls
-          wasd-controls
-          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
-          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
-          cursor="fuse: false; fuseTimeout: 500"
-          position="0 0 -1"
-          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-          material="color: red; shader: flat"
-        >
-        </a-entity>
-      </a-entity>
     </a-scene>
   </body>
   <script>

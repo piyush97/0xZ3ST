@@ -1,12 +1,6 @@
-// Your web app's Firebase configuration
+// Firebase Configuration will be provided by Piyush
 var firebaseConfig = {
-  apiKey: "AIzaSyDkm-YnLfscDAm9XbDhOKiAgLHJVZXE5k0",
-  authDomain: "xz3st-piyush97.firebaseapp.com",
-  projectId: "xz3st-piyush97",
-  storageBucket: "xz3st-piyush97.appspot.com",
-  messagingSenderId: "400768516912",
-  appId: "1:400768516912:web:00a54a09f6be4ac62cbef5",
-  measurementId: "G-C0979WFBGT",
+  // Paste credentials here
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
