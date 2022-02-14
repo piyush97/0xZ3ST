@@ -1,61 +1,143 @@
-import express from "express";
-import {signInUsers} from "./config/firebase.js";
-/** @type {name: String, version: String, description: String}
- * @description This is the application data.
- * @author Piyush97
- * @version 0.0.1
- */
-const appData = {
-  name: "0xZ3ST",
-  version: "0.0.1",
-  description: `The Treasure hunt with Metaverse flavour.`,
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDkm-YnLfscDAm9XbDhOKiAgLHJVZXE5k0",
+  authDomain: "xz3st-piyush97.firebaseapp.com",
+  projectId: "xz3st-piyush97",
+  storageBucket: "xz3st-piyush97.appspot.com",
+  messagingSenderId: "400768516912",
+  appId: "1:400768516912:web:00a54a09f6be4ac62cbef5",
+  measurementId: "G-C0979WFBGT",
 };
-/** @type {Express}
- *  @description The express application.
- *  @see {@link https://expressjs.com/en/4x/api.html#express}
- *
- */
-const app = express();
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+// Initialize variables
+const auth = firebase.auth();
+const database = firebase.database();
 
-/** @type {number}
- * @description port number
- * @default 3000
- */
-const PORT = process.env.PORT || 3000;
+// Set up our register function
+function register() {
+  // Get all our input fields
+  email = document.getElementById("email").value;
+  password = document.getElementById("password").value;
+  full_name = document.getElementById("full_name").value;
 
-/**
- * @description VIEW ENGINE SETUP WITH EJS
- * @see {@link https://ejs.co/}
- * @see {@link https://expressjs.com/en/4x/api.html#express.static}
- */
-app.set("view engine", "ejs");
+  // Validate input fields
+  if (validate_email(email) == false || validate_password(password) == false) {
+    alert("Email or Password is Outta Line!!");
+    return;
+    // Don't continue running the code
+  }
+  if (validate_field(full_name) == false) {
+    alert("One or More Extra Fields is Outta Line!!");
+    return;
+  }
 
-/**
- * @description The onboarding route of the application.
- */
-app.get("/signup", function (req, res) {
-  res.render("pages/signup", {data:{appData:appData,signInUsers:signInUsers}});
-});
+  // Move on with Auth
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then(function () {
+      // Declare user variable
+      var user = auth.currentUser;
 
-/**
- * @description The sign in route of the application.
- */
-app.get("/signin", function (req, res) {
-  res.render("pages/signin", {data:{appData:appData,signInUsers:signInUsers}});
-});
+      // Add this user to Firebase Database
+      var database_ref = database.ref();
 
-/**
- * @description The main route of the application.
- * @see {@link https://expressjs.com/en/4x/api.html#app.get}
- */
-app.get("/", function (req, res) {
-  res.render("pages/play", {data:{appData:appData,signInUsers:signInUsers}});
-});
+      // Create User data
+      var user_data = {
+        email: email,
+        full_name: full_name,
+        last_login: Date.now(),
+      };
 
-/**
- * @description Port listening on the specified port.
- * @see {@link https://expressjs.com/en/4x/api.html#app.listen}
- */
-app.listen(PORT, function () {
-  console.log("Server started on port " + PORT + " 🚀");
-});
+      // Push to Firebase Database
+      database_ref.child("users/" + user.uid).set(user_data);
+
+      // DOne
+      alert("User Created!!");
+    })
+    .catch(function (error) {
+      // Firebase will use this to alert of its errors
+      var error_code = error.code;
+      var error_message = error.message;
+
+      alert(error_message);
+    });
+}
+
+// Set up our login function
+function login() {
+  // Get all our input fields
+  email = document.getElementById("email").value;
+  password = document.getElementById("password").value;
+
+  // Validate input fields
+  if (validate_email(email) == false || validate_password(password) == false) {
+    alert("Email or Password is Outta Line!!");
+    return;
+    // Don't continue running the code
+  }
+
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then(function () {
+      // Declare user variable
+      var user = auth.currentUser;
+
+      // Add this user to Firebase Database
+      var database_ref = database.ref();
+
+      // Create User data
+      var user_data = {
+        last_login: Date.now(),
+      };
+
+      // Push to Firebase Database
+      database_ref.child("users/" + user.uid).update(user_data);
+
+      // DOne
+      alert("User Logged In!!");
+    })
+    .then(function () {
+      window.location.href = "game.html";
+    })
+    .catch(function (error) {
+      // Firebase will use this to alert of its errors
+      var error_code = error.code;
+      var error_message = error.message;
+
+      alert(error_message);
+    });
+}
+
+// Validate Functions
+function validate_email(email) {
+  expression = /^[^@]+@\w+(\.\w+)+\w$/;
+  if (expression.test(email) == true) {
+    // Email is good
+    return true;
+  } else {
+    // Email is not good
+    return false;
+  }
+}
+
+function validate_password(password) {
+  // Firebase only accepts lengths greater than 6
+  if (password < 6) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function validate_field(field) {
+  if (field == null) {
+    return false;
+  }
+
+  if (field.length <= 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
