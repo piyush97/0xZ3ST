@@ -1,4 +1,7 @@
 // Firebase Configuration will be provided by Piyush
+
+
+
 var firebaseConfig = {
   // Paste credentials here
 };
@@ -7,6 +10,27 @@ firebase.initializeApp(firebaseConfig);
 // Initialize variables
 const auth = firebase.auth();
 const database = firebase.database();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+/// Sign in event handlers
+
+
+const signInWithEmailFunction = () => {
+  const email = mailField.value;
+  const password = passwordField.value;
+
+  //Built in firebase function responsible for authentication
+  auth.signInWithEmailAndPassword(email, password)
+  .then(() => {
+    //Signed in successfully
+    window.location.assign('./profile')
+  })
+  .catch(error => {
+    //Something went wrong
+    console.error(error);
+  })
+}
 
 // Set up our register function
 function register() {
@@ -101,6 +125,37 @@ function login() {
 
       alert(error_message);
     });
+}
+function signInWithGoogle(){
+  const signInBtn = document.getElementById('signInBtn');
+  auth.signInWithPopup(provider).then(function () {
+    // Declare user variable
+    var user = auth.currentUser;
+
+    // Add this user to Firebase Database
+    var database_ref = database.ref();
+
+    // Create User data
+    var user_data = {
+      last_login: Date.now(),
+    };
+
+    // Push to Firebase Database
+    database_ref.child("users/" + user.uid).update(user_data);
+
+    // DOne
+    alert("User Logged In!!");
+  })
+  .then(function () {
+    window.location.href = "game.html";
+  })
+  .catch(function (error) {
+    // Firebase will use this to alert of its errors
+    var error_code = error.code;
+    var error_message = error.message;
+
+    alert(error_message);
+  });
 }
 
 // Validate Functions
