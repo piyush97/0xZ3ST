@@ -150,7 +150,7 @@ function signInWithGoogle(){
     var error_code = error.code;
     var error_message = error.message;
 
-    aSwal.fire({
+    Swal.fire({
       icon: 'error',
       title: error_message
     });
