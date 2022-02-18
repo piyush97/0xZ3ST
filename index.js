@@ -1,17 +1,12 @@
 // Firebase Configuration will be provided by Piyush
-import .env
 var firebaseConfig = {
   // Paste credentials here
- 
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Initialize variables
-const db = firebase.firestore();
- 
 const auth = firebase.auth();
 const database = firebase.database();
-//database.settings({ timestampsInSnapshots: true });
 
 // Set up our register function
 function register() {
@@ -30,7 +25,7 @@ function register() {
     alert("One or More Extra Fields is Outta Line!!");
     return;
   }
-  
+
   // Move on with Auth
   auth
     .createUserWithEmailAndPassword(email, password)
@@ -50,12 +45,6 @@ function register() {
 
       // Push to Firebase Database
       database_ref.child("users/" + user.uid).set(user_data);
-      // saving data in to firestore
-        db.collection('Udata').add({
-          email,
-          full_name,
-          level: 0
-      });
 
       // DOne
       alert("User Created!!");
