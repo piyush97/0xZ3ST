@@ -1,15 +1,88 @@
+
 // Firebase Configuration will be provided by Piyush
+
 var firebaseConfig = {
-  // Paste credentials here
+  apiKey: "AIzaSyDsX8rastJxYsoIAGJh-c_qp28kkXIexlw",
+  authDomain: "zest-auth-test.firebaseapp.com",
+  projectId: "zest-auth-test",
+  storageBucket: "zest-auth-test.appspot.com",
+  messagingSenderId: "421904359029",
+  appId: "1:421904359029:web:d26d15a1f8eba87975623c",
+  measurementId: "G-KFBF02F3NP"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app=firebase.initializeApp(firebaseConfig);
 // Initialize variables
 const auth = firebase.auth();
 const database = firebase.database();
 
+
+
+function onSignInSubmit(){
+  phone = document.getElementById("phone").value;
+  const appVerifier = window.recaptchaVerifier;
+  otp = document.getElementById("otp").value;
+  auth.signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    .then((confirmationResult) => {
+      // SMS sent. Prompt user to type the code from the message, then sign the
+      // user in with confirmationResult.confirm(code).
+
+      window.confirmationResult = confirmationResult;
+      confirmationResult.confirm(otp).then((result) => {
+        // User signed in successfully.
+        const user = result.user;
+        // ...
+      }).catch((error) => {
+        // User couldn't sign in (bad verification code?)
+        // ...
+        console.error(error);
+      });
+      // ...
+    }).catch((error) => {
+      console.error(error);
+    });
+
+ 
+}
+function getOtp(){
+ 
+  signupbtn = document.getElementById('signupbutton');
+  
+ const t=firebase.auth.getAuth();
+  t.languageCode = 'en';
+
+  window.recaptchaVerifier = new RecaptchaVerifier('signupbutton', {
+    'size': 'invisible',
+    'callback': (response) => {
+      // reCAPTCHA solved, allow signInWithPhoneNumber.
+      onSignInSubmit();
+    }
+  }, auth);
+}
+function otpsignup(){
+  email = document.getElementById("email");
+  password = document.getElementById("password");
+  full_name = document.getElementById('full_name');
+  signupbtn = document.getElementById('signupbutton');
+  full_name.remove();
+
+  email.placeholder="Phone Number";
+  email.type="tel";
+  email.id="phone";
+  password.placeholder="OTP";
+  password.type='number';
+  password.id='otp';
+  signupbtn.innerHTML='Get OTP';
+  signupbtn.onclick=getOtp();
+
+
+}
+
+
+
 // Set up our register function
 function register() {
+ 
   // Get all our input fields
   email = document.getElementById("email").value;
   password = document.getElementById("password").value;
