@@ -1,5 +1,4 @@
 // Firebase Configuration will be provided by Piyush
-
 var firebaseConfig = {
   // Paste credentials here
 };
@@ -18,12 +17,18 @@ function register() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    sweetalert2("Email or Password is Outta Line!!");
+    Swal.fire({
+      icon: 'error',
+      title: 'Email or Password is Outta Line!!'
+    });
     return;
     // Don't continue running the code
   }
   if (validate_field(full_name) == false) {
-    sweetalert2("One or More Extra Fields is Outta Line!!");
+    Swal.fire({
+      icon: 'error',
+      title: 'One or More Extra Fields is Outta Line!!'
+    });
     return;
   }
 
@@ -48,14 +53,20 @@ function register() {
       database_ref.child("users/" + user.uid).set(user_data);
 
       // DOne
-      sweetalert2("User Created!!");
+      Swal.fire({
+        icon: 'success',
+        title: 'User created'
+      });
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
       var error_code = error.code;
       var error_message = error.message;
 
-      sweetalert2(error_message);
+      Swal.fire({
+        icon: 'error',
+        title: error_message
+      });
     });
 }
 
@@ -67,7 +78,10 @@ function login() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    sweetalert2("Email or Password is Outta Line!!");
+    Swal.fire({
+      icon: 'error',
+      title: 'Email or Password is Outta Line!!'
+    });
     return;
     // Don't continue running the code
   }
@@ -90,7 +104,10 @@ function login() {
       database_ref.child("users/" + user.uid).update(user_data);
 
       // DOne
-      sweetalert2("User Logged In!!");
+      Swal.fire({
+        icon: 'success',
+        title: 'User Logged In!!'
+    });
     })
     .then(function () {
       window.location.href = "game.html";
@@ -100,40 +117,44 @@ function login() {
       var error_code = error.code;
       var error_message = error.message;
 
-      sweetalert2(error_message);
+      alert(error_message);
     });
 }
-function LogInWithGoogle() {
-  auth
-    .signInWithPopup(provider)
-    .then(function () {
-      // Declare user variable
-      var user = auth.currentUser;
+function signInWithGoogle(){
+  auth.signInWithPopup(provider).then(function () {
+    // Declare user variable
+    var user = auth.currentUser;
 
-      // Add this user to Firebase Database
-      var database_ref = database.ref();
+    // Add this user to Firebase Database
+    var database_ref = database.ref();
 
-      // Create User data
-      var user_data = {
-        last_login: Date.now(),
-      };
+    // Create User data
+    var user_data = {
+      last_login: Date.now(),
+    };
 
-      // Push to Firebase Database
-      database_ref.child("users/" + user.uid).update(user_data);
+    // Push to Firebase Database
+    database_ref.child("users/" + user.uid).update(user_data);
 
-      // DOne
-      sweetalert2("User Logged In!!");
-    })
-    .then(function () {
-      window.location.href = "game.html";
-    })
-    .catch(function (error) {
-      // Firebase will use this to alert of its errors
-      var error_code = error.code;
-      var error_message = error.message;
-
-      sweetalert2(error_message);
+    // DOne
+    Swal.fire({
+      icon: 'success',
+      title: 'User Logged in successfully'
     });
+  })
+  .then(function () {
+    window.location.href = "game.html";
+  })
+  .catch(function (error) {
+    // Firebase will use this to alert of its errors
+    var error_code = error.code;
+    var error_message = error.message;
+
+    aSwal.fire({
+      icon: 'error',
+      title: error_message
+    });
+  });
 }
 
 // Validate Functions
