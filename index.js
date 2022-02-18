@@ -1,31 +1,14 @@
 // Firebase Configuration will be provided by Piyush
 
-
-
 var firebaseConfig = {
   // Paste credentials here
-  apiKey: "AIzaSyBu6uHDX4u3QDt42e60u9ZZAfwlKXNDvsQ",
-  authDomain: "xzest-c6360.firebaseapp.com",
-  projectId: "xzest-c6360",
-  storageBucket: "xzest-c6360.appspot.com",
-  messagingSenderId: "269111580559",
-  appId: "1:269111580559:web:48301e740393546cc05dfa",
-  measurementId: "G-06MPS4XV34"
-
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Initialize variables
 const auth = firebase.auth();
 const database = firebase.database();
-
 const provider = new firebase.auth.GoogleAuthProvider();
-
-/// Sign in event handlers
-
-
-
-
 // Set up our register function
 function register() {
   // Get all our input fields
@@ -35,12 +18,12 @@ function register() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert("Email or Password is Outta Line!!");
+    sweetalert2("Email or Password is Outta Line!!");
     return;
     // Don't continue running the code
   }
   if (validate_field(full_name) == false) {
-    alert("One or More Extra Fields is Outta Line!!");
+    sweetalert2("One or More Extra Fields is Outta Line!!");
     return;
   }
 
@@ -65,14 +48,14 @@ function register() {
       database_ref.child("users/" + user.uid).set(user_data);
 
       // DOne
-      alert("User Created!!");
+      sweetalert2("User Created!!");
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
       var error_code = error.code;
       var error_message = error.message;
 
-      alert(error_message);
+      sweetalert2(error_message);
     });
 }
 
@@ -84,7 +67,7 @@ function login() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert("Email or Password is Outta Line!!");
+    sweetalert2("Email or Password is Outta Line!!");
     return;
     // Don't continue running the code
   }
@@ -107,7 +90,7 @@ function login() {
       database_ref.child("users/" + user.uid).update(user_data);
 
       // DOne
-      alert("User Logged In!!");
+      sweetalert2("User Logged In!!");
     })
     .then(function () {
       window.location.href = "game.html";
@@ -117,38 +100,40 @@ function login() {
       var error_code = error.code;
       var error_message = error.message;
 
-      alert(error_message);
+      sweetalert2(error_message);
     });
 }
-function LogInWithGoogle(){
-  auth.signInWithPopup(provider).then(function () {
-    // Declare user variable
-    var user = auth.currentUser;
+function LogInWithGoogle() {
+  auth
+    .signInWithPopup(provider)
+    .then(function () {
+      // Declare user variable
+      var user = auth.currentUser;
 
-    // Add this user to Firebase Database
-    var database_ref = database.ref();
+      // Add this user to Firebase Database
+      var database_ref = database.ref();
 
-    // Create User data
-    var user_data = {
-      last_login: Date.now(),
-    };
+      // Create User data
+      var user_data = {
+        last_login: Date.now(),
+      };
 
-    // Push to Firebase Database
-    database_ref.child("users/" + user.uid).update(user_data);
+      // Push to Firebase Database
+      database_ref.child("users/" + user.uid).update(user_data);
 
-    // DOne
-    alert("User Logged In!!");
-  })
-  .then(function () {
-    window.location.href = "game.html";
-  })
-  .catch(function (error) {
-    // Firebase will use this to alert of its errors
-    var error_code = error.code;
-    var error_message = error.message;
+      // DOne
+      sweetalert2("User Logged In!!");
+    })
+    .then(function () {
+      window.location.href = "game.html";
+    })
+    .catch(function (error) {
+      // Firebase will use this to alert of its errors
+      var error_code = error.code;
+      var error_message = error.message;
 
-    alert(error_message);
-  });
+      sweetalert2(error_message);
+    });
 }
 
 // Validate Functions
@@ -183,5 +168,3 @@ function validate_field(field) {
     return true;
   }
 }
-
-
