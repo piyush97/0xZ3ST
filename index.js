@@ -4,6 +4,14 @@
 
 var firebaseConfig = {
   // Paste credentials here
+  apiKey: "AIzaSyBu6uHDX4u3QDt42e60u9ZZAfwlKXNDvsQ",
+  authDomain: "xzest-c6360.firebaseapp.com",
+  projectId: "xzest-c6360",
+  storageBucket: "xzest-c6360.appspot.com",
+  messagingSenderId: "269111580559",
+  appId: "1:269111580559:web:48301e740393546cc05dfa",
+  measurementId: "G-06MPS4XV34"
+
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -16,21 +24,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 /// Sign in event handlers
 
 
-const signInWithEmailFunction = () => {
-  const email = mailField.value;
-  const password = passwordField.value;
 
-  //Built in firebase function responsible for authentication
-  auth.signInWithEmailAndPassword(email, password)
-  .then(() => {
-    //Signed in successfully
-    window.location.assign('./profile')
-  })
-  .catch(error => {
-    //Something went wrong
-    console.error(error);
-  })
-}
 
 // Set up our register function
 function register() {
@@ -126,8 +120,7 @@ function login() {
       alert(error_message);
     });
 }
-function signInWithGoogle(){
-  const signInBtn = document.getElementById('signInBtn');
+function LogInWithGoogle(){
   auth.signInWithPopup(provider).then(function () {
     // Declare user variable
     var user = auth.currentUser;
