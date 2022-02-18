@@ -1,27 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap"
-      rel="stylesheet"
-    />
-
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
     <title>0xZ3ST</title>
-    
-    <!-- <meta charset="utf-8" />
-    <title>0xZ3ST</title> -->
-
-
 
     <!-- CSS (Tailwind; utility CDN Call) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,17 +18,27 @@
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
   </head>
   <body>
-    <div class="Intro">
-      <h1 class="logo-header">
-        <span class="logo"> Welcome </span>
-      </h1>
-
-      <header>
-        <h4>OxZ3st</h4>
-      </header>
-
-      
+    <!--creating different classes and providing the indivdual tailwindcss classes to it.-->
+    
+    <div class="intro">
+      <h1
+        class="bg-gray-800 h-5 fixed inset-x-0 top-0 left-0 z-index: 1 py-5 w-3 h-4 block transition-property: all"
+      ></h1>
     </div>
+
+    <div class="logo">
+      <span
+        class="absolute bottom- -20px bg-gray-800 p-4 opacity: 0 inline-block">
+        Welcome
+      </span>
+    </div>
+
+    <div class="logo-header">
+      <h2 class="absolute top-50% left-45% text-orange-600 translate-x- -100% translate-y- -s100%">
+                 
+      </h2>
+    </div>
+   
     <div class="md:container md:mx-auto p-6 grid grid-cols-1">
       <blockquote
         class="text-2xl font-semibold italic text-center text-purple-900 mb-3"
@@ -57,9 +48,8 @@
           class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block"
         >
           <span class="relative text-white">0xZ3ST</span>
-
         </span>
-       </blockquote>
+      </blockquote>
 
       <input
         class="w-full lg:flex items-center text-sm leading-6 text-purple-400 rounded-md ring-1 ring-purple-900/10 shadow-sm py-1.5 pl-2 pr-3 hover:ring-purple-300 dark:bg-purple-800 dark:highlight-white/5 dark:hover:bg-purple-700 mb-4"
