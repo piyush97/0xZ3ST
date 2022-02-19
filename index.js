@@ -15,7 +15,7 @@ const database = firebase.database();
 //database.settings({ timestampsInSnapshots: true });
 
 /**
- * Function used to Register the user
+ * @description Function used to Register the user
  * @param {string} email
  * @param {string} password
  * @param {string} full_name
@@ -23,9 +23,6 @@ const database = firebase.database();
  * @author Piyush
  * @since 1.0
  * @version 1.0
- * @see
- * @example
- * register();
  */
 function register() {
   // Get all our input fields
@@ -82,7 +79,15 @@ function register() {
     });
 }
 
-// Set up our login function
+/**
+ * @description Function used to login existing user in to the app
+ * @param {string} email
+ * @param {string} password
+ * @returns {void}
+ * @author Piyush
+ * @since 1.0
+ * @version 1.0
+ */
 function login() {
   // Get all our input fields
   email = document.getElementById("email").value;
@@ -112,7 +117,7 @@ function login() {
       // Push to Firebase Database
       database_ref.child("users/" + user.uid).update(user_data);
 
-      // DOne
+      // done
       alert("User Logged In!!");
     })
     .then(function () {
@@ -127,7 +132,14 @@ function login() {
     });
 }
 
-// Validate Functions
+/**
+ * @description This function validates email
+ * @param {*} email
+ * @returns {boolean} true or false based on the validation of email
+ * @author Piyush
+ * @since 1.0
+ * @version 1.0
+ */
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/;
   if (expression.test(email) == true) {
@@ -139,6 +151,11 @@ function validate_email(email) {
   }
 }
 
+/**
+ * @description This function validates password length
+ * @param {*} password
+ * @returns  {boolean} true or false based on the validation of password
+ */
 function validate_password(password) {
   // Firebase only accepts lengths greater than 6
   if (password < 6) {
@@ -147,7 +164,11 @@ function validate_password(password) {
     return true;
   }
 }
-
+/**
+ * @description This function validates all the fields in the form
+ * @param {*} field
+ * @returns boolean true or false based on the validation of field
+ */
 function validate_field(field) {
   if (field == null) {
     return false;
