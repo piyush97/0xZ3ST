@@ -1,19 +1,32 @@
 // Firebase Configuration will be provided by Piyush
-import .env
+/**
+ * Initialize Firebase with the config.
+ */
 var firebaseConfig = {
   // Paste credentials here
- 
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Initialize variables
 const db = firebase.firestore();
- 
+
 const auth = firebase.auth();
 const database = firebase.database();
 //database.settings({ timestampsInSnapshots: true });
 
-// Set up our register function
+/**
+ * Function used to Register the user
+ * @param {string} email
+ * @param {string} password
+ * @param {string} full_name
+ * @returns {void}
+ * @author Piyush
+ * @since 1.0
+ * @version 1.0
+ * @see
+ * @example
+ * register();
+ */
 function register() {
   // Get all our input fields
   email = document.getElementById("email").value;
@@ -30,7 +43,7 @@ function register() {
     alert("One or More Extra Fields is Outta Line!!");
     return;
   }
-  
+
   // Move on with Auth
   auth
     .createUserWithEmailAndPassword(email, password)
@@ -51,10 +64,10 @@ function register() {
       // Push to Firebase Database
       database_ref.child("users/" + user.uid).set(user_data);
       // saving data in to firestore
-        db.collection('Udata').add({
-          email,
-          full_name,
-          level: 0
+      db.collection("Udata").add({
+        email,
+        full_name,
+        level: 0,
       });
 
       // DOne
