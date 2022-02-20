@@ -1,6 +1,6 @@
 {
   "name": "0xZ3ST",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "scripts": {
     "docs": "jsdoc -c config.json ./README.md -d ./docs index.js",
     "test": "jest"
