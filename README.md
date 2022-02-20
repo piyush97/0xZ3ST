@@ -12,10 +12,10 @@
 3. Scope
 Considering the target audience mainly consisting of young users , the platform for the game should be a cross platform app which is supported on all kinds of smartphones. Our game will act as an ice breaker amongst users and would be a great team building tool. It won’t only have level progression based on correct answers, the end-to-end engaging flow would be ensured. If in a scenario where the user is stuck in answering questions, they can access the progressive hints to traverse further in game. Moreover, in future scope the earned coins (Z3ST coins) will have tangible real world monetary value which users can use to upgrade and unlock new features within the game. They can even use these coins to purchase real world products just like any other crypto currency.
 <h1> Prototype </h1>
-<img src="/img/1.png"/>
-<img src="/img/2.png"/>
-<img src="/img/3.png"/>
-<img src="/img/4.png"/>
-<img src="/img/5.png"/>
-<img src="/img/6.png"/>
-<img src="/img/7.png"/>
+<img src="https://i.ibb.co/F5g5j8P/1.png" alt="1" border="0">
+<img src="https://i.ibb.co/KjW31kY/2.png" alt="2" border="0">
+<img src="https://i.ibb.co/3yPsVPm/3.png" alt="3" border="0">
+<img src="https://i.ibb.co/4R1bTWz/4.png" alt="4" border="0">
+<img src="https://i.ibb.co/VCyK2mR/5.png" alt="5" border="0">
+<img src="https://i.ibb.co/qJPkCX4/6.png" alt="6" border="0">
+<img src="https://i.ibb.co/HhsS7zS/7.png" alt="7" border="0">
