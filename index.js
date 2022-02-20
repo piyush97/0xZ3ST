@@ -12,7 +12,7 @@ const db = firebase.firestore();
 
 const auth = firebase.auth();
 const database = firebase.database();
-//database.settings({ timestampsInSnapshots: true });
+const provider = new firebase.auth.GoogleAuthProvider();
 
 /**
  * @description Function used to Register the user
@@ -32,12 +32,18 @@ function register() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert("Email or Password is Outta Line!!");
+    Swal.fire({
+      icon: 'error',
+      title: 'Email or Password is Outta Line!!'
+    });
     return;
     // Don't continue running the code
   }
   if (validate_field(full_name) == false) {
-    alert("One or More Extra Fields is Outta Line!!");
+    Swal.fire({
+      icon: 'error',
+      title: 'One or More Extra Fields is Outta Line!!'
+    });
     return;
   }
 
@@ -68,14 +74,20 @@ function register() {
       });
 
       // DOne
-      alert("User Created!!");
+      Swal.fire({
+        icon: 'success',
+        title: 'User created'
+      });
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
       var error_code = error.code;
       var error_message = error.message;
 
-      alert(error_message);
+      Swal.fire({
+        icon: 'error',
+        title: error_message
+      });
     });
 }
 
@@ -95,7 +107,10 @@ function login() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert("Email or Password is Outta Line!!");
+    Swal.fire({
+      icon: 'error',
+      title: 'Email or Password is Outta Line!!'
+    });
     return;
     // Don't continue running the code
   }
@@ -117,8 +132,12 @@ function login() {
       // Push to Firebase Database
       database_ref.child("users/" + user.uid).update(user_data);
 
-      // done
-      alert("User Logged In!!");
+      // Done
+      Swal.fire({
+        icon: 'success',
+        title: 'User Logged In!!'
+    });
+
     })
     .then(function () {
       window.location.href = "game.html";
@@ -130,6 +149,42 @@ function login() {
 
       alert(error_message);
     });
+}
+function signInWithGoogle(){
+  auth.signInWithPopup(provider).then(function () {
+    // Declare user variable
+    var user = auth.currentUser;
+
+    // Add this user to Firebase Database
+    var database_ref = database.ref();
+
+    // Create User data
+    var user_data = {
+      last_login: Date.now(),
+    };
+
+    // Push to Firebase Database
+    database_ref.child("users/" + user.uid).update(user_data);
+
+    // DOne
+    Swal.fire({
+      icon: 'success',
+      title: 'User Logged in successfully'
+    });
+  })
+  .then(function () {
+    window.location.href = "game.html";
+  })
+  .catch(function (error) {
+    // Firebase will use this to alert of its errors
+    var error_code = error.code;
+    var error_message = error.message;
+
+    Swal.fire({
+      icon: 'error',
+      title: error_message
+    });
+  });
 }
 
 /**
