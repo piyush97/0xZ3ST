@@ -1,0 +1,31 @@
+{
+  "opts": {
+    "template": "node_modules/docdash"
+  },
+  "docdash": {
+    "title": "0xz3st Documentation",
+    "meta": {
+      "title": "0xz3st Documentation",
+      "description": "0xz3st Documentation",
+      "keyword": " 0xz3st Documentation"
+    },
+    "search": true,
+
+    "typedefs": true,
+
+    "private": false,
+
+    "menu": {
+      "Project Website": {
+        "href": "https://piyushmehta.com",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "website_link"
+      }
+    },
+    "scopeInOutputPath": true,
+    "nameInOutputPath": true,
+    "versionInOutputPath": true
+  },
+  "footer": "This is footer"
+}

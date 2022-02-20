@@ -1,4 +1,56 @@
-// Firebase Configuration will be provided by Piyush
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>index.js - 0xz3st Documentation</title>
+    
+    <meta name="description" content="0xz3st Documentation" />
+    
+        <meta name="keywords" content=" 0xz3st Documentation" />
+        <meta name="keyword" content=" 0xz3st Documentation" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://piyushmehta.com" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h3>Global</h3><ul><li><a href="global.html#firebaseConfig">firebaseConfig</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#validate_email">validate_email</a></li><li><a href="global.html#validate_field">validate_field</a></li><li><a href="global.html#validate_password">validate_password</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Firebase Configuration will be provided by Piyush
 /**
  * Initialize Firebase with the config.
  */
@@ -12,7 +64,7 @@ const db = firebase.firestore();
 
 const auth = firebase.auth();
 const database = firebase.database();
-const provider = new firebase.auth.GoogleAuthProvider();
+//database.settings({ timestampsInSnapshots: true });
 
 /**
  * @description Function used to Register the user
@@ -32,18 +84,12 @@ function register() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Email or Password is Outta Line!!'
-    });
+    alert("Email or Password is Outta Line!!");
     return;
     // Don't continue running the code
   }
   if (validate_field(full_name) == false) {
-    Swal.fire({
-      icon: 'error',
-      title: 'One or More Extra Fields is Outta Line!!'
-    });
+    alert("One or More Extra Fields is Outta Line!!");
     return;
   }
 
@@ -74,20 +120,14 @@ function register() {
       });
 
       // DOne
-      Swal.fire({
-        icon: 'success',
-        title: 'User created'
-      });
+      alert("User Created!!");
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
       var error_code = error.code;
       var error_message = error.message;
 
-      Swal.fire({
-        icon: 'error',
-        title: error_message
-      });
+      alert(error_message);
     });
 }
 
@@ -107,10 +147,7 @@ function login() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Email or Password is Outta Line!!'
-    });
+    alert("Email or Password is Outta Line!!");
     return;
     // Don't continue running the code
   }
@@ -132,12 +169,8 @@ function login() {
       // Push to Firebase Database
       database_ref.child("users/" + user.uid).update(user_data);
 
-      // Done
-      Swal.fire({
-        icon: 'success',
-        title: 'User Logged In!!'
-    });
-
+      // done
+      alert("User Logged In!!");
     })
     .then(function () {
       window.location.href = "game.html";
@@ -149,42 +182,6 @@ function login() {
 
       alert(error_message);
     });
-}
-function signInWithGoogle(){
-  auth.signInWithPopup(provider).then(function () {
-    // Declare user variable
-    var user = auth.currentUser;
-
-    // Add this user to Firebase Database
-    var database_ref = database.ref();
-
-    // Create User data
-    var user_data = {
-      last_login: Date.now(),
-    };
-
-    // Push to Firebase Database
-    database_ref.child("users/" + user.uid).update(user_data);
-
-    // DOne
-    Swal.fire({
-      icon: 'success',
-      title: 'User Logged in successfully'
-    });
-  })
-  .then(function () {
-    window.location.href = "game.html";
-  })
-  .catch(function (error) {
-    // Firebase will use this to alert of its errors
-    var error_code = error.code;
-    var error_message = error.message;
-
-    Swal.fire({
-      icon: 'error',
-      title: error_message
-    });
-  });
 }
 
 /**
@@ -213,7 +210,7 @@ function validate_email(email) {
  */
 function validate_password(password) {
   // Firebase only accepts lengths greater than 6
-  if (password < 6) {
+  if (password &lt; 6) {
     return false;
   } else {
     return true;
@@ -229,9 +226,36 @@ function validate_field(field) {
     return false;
   }
 
-  if (field.length <= 0) {
+  if (field.length &lt;= 0) {
     return false;
   } else {
     return true;
   }
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Sat Feb 19 2022 21:35:52 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
