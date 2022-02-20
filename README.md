@@ -3,6 +3,17 @@
 <h1>Treasure hunt in AR flavour</h1>
 <h1 >PROJECT DESCRIPTION</h1>
 
+# How to start Project
+
+```sh
+$ npm install # installs dependencies
+$ npm run docs # this generates docs for the code in real time
+# OSX only
+$ open index.html # Open it directly, will use webpack to serve js bundle in future
+# Others
+Open index.html directly
+```
+
 1. Purpose
    The purpose of the document is to briefly demonstrate the end deliverables and the key features on which this project is built. It proposes to modernize the archaic game of ‘Treasure Hunt’ and bring it to the realm of metaverse using trailblazing technology like augmented reality. This game falls under the genre of Infotainment and Adventure. It has question centric navigational game flow. Users with their smartphones would be able to reach real life locations and scan the markers for questions to pop on their screens. Answering those questions would take them on a quest to find further treasures.
 
