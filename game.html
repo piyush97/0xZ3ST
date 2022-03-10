@@ -11,29 +11,39 @@
     <title>0xZ3ST</title>
        
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-       
+
+     
+    <!-- UIkit CSS -->
+     
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css"
     />
+
        
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
      
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
      
     <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+
      
     <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+
      
     <script src="https://rawgit.com/Utopiah/googlepoly-load-component/master/googlepoly-load-component.js"></script>
+
      
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+
      
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js"></script>
      
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
      
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.0-alpha-rc1/aframe/build/aframe-ar-nft.js"></script>
+
      
     <script src="https://unpkg.com/aframe-event-set-component/dist/aframe-event-set-component.min.js"></script>
   </head>
@@ -47,6 +57,7 @@
     >
          
       <h1 class="uk-heading-primary uk-text-primary">0xZ3ST</h1>
+
          
       <p class="uk-text-muted">
         This is the first level of the game, scan the marker and answer
@@ -67,6 +78,7 @@
         <li>      In case you're stuck, click help button </li>
            
       </ol>
+
          
       <button
         id="startAR"
@@ -74,8 +86,10 @@
       >
               Ready To Start!    
       </button>
+
          
     </div>
+
      
     <div id="patience" class="uk-padding-large">
          
@@ -85,6 +99,7 @@
       </p>
        
     </div>
+
      
     <a-scene
       id="scene"
@@ -102,12 +117,18 @@
           scale="1.2 0.6 1.2"
           opacity="0.8"
           event-set__mouseenter="color: #FFFF84"
-          event-set__mouseleave="color: #FFFFFF;                                  position: 0 0.3 0;                                  scale: 1.2 0.6 1.2"
-          event-set__mousedown="position: 0 0.15 0;                                 scale: 1.2 0.3 1.2"
-          event-set__mouseup="color: #FFFFFF;                               position: 0 0.3 0;                               scale: 1.2 0.6 1.2"
+          event-set__mouseleave="color: #FFFFFF;
+                                  position: 0 0.3 0;
+                                  scale: 1.2 0.6 1.2"
+          event-set__mousedown="position: 0 0.15 0;
+                                 scale: 1.2 0.3 1.2"
+          event-set__mouseup="color: #FFFFFF;
+                               position: 0 0.3 0;
+                               scale: 1.2 0.6 1.2"
         >
                
         </a-box>
+
              
         <a-entity id="boxCover0" position="0.6 0.25 0" rotation="0 0 180">
                  
@@ -160,28 +181,47 @@
           </a-box>
                
         </a-entity>
-                   
+
+             
+        <!-- effects -->
+             
         <a-entity
           id="particles"
           position="0 0 0"
-          particle-system="enabled: false;                               color: #EEFF00, #FF8800;                               particleCount: 50;                               maxParticleCount: 200;                               maxAge: 2;                               duration: 1;                               velocityValue: 0 5 0;                               velocitySpread: 5 5 5;                               accelerationSpread: 5 0 5;              texture: https://unpkg.com/aframe-particle-system-component@1.0.x/dist/images/star.png"
+          particle-system="enabled: false;
+                               color: #EEFF00, #FF8800;
+                               particleCount: 50;
+                               maxParticleCount: 200;
+                               maxAge: 2;
+                               duration: 1;
+                               velocityValue: 0 5 0;
+                               velocitySpread: 5 5 5;
+                               accelerationSpread: 5 0 5;
+              texture: https://unpkg.com/aframe-particle-system-component@1.0.x/dist/images/star.png"
         >
                
         </a-entity>
-                   
-        <!-- Alex “SAFFY” Safayan:         https://poly.google.com/view/bVepm2yfJTh -->
+
+             
+        <!-- loot -->
+             
+        <!-- Alex “SAFFY” Safayan:
+         https://poly.google.com/view/bVepm2yfJTh -->
              
         <a-entity
           id="plant"
           visible="false"
           scale="1.6 1.6 1.6"
           position="0 0.3 0"
-          gpoly="polyid: bVepm2yfJTh;                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
+          gpoly="polyid: bVepm2yfJTh;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
         >
                
         </a-entity>
+
              
-        <!-- Anastasiia Ku:         https://poly.google.com/view/0-_UGETLPsX -->
+        <!-- Anastasiia Ku:
+         https://poly.google.com/view/0-_UGETLPsX -->
              
         <a-entity
           id="book"
@@ -189,12 +229,15 @@
           scale="1.6 1.6 1.6"
           position="0 0.3 0"
           rotation="6 0 45"
-          gpoly="polyid: 0-_UGETLPsX;                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
+          gpoly="polyid: 0-_UGETLPsX;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
         >
                
         </a-entity>
+
              
-        <!-- Tiff Eidmann:         https://poly.google.com/view/fkPRnm8iSXI -->
+        <!-- Tiff Eidmann:
+         https://poly.google.com/view/fkPRnm8iSXI -->
              
         <a-entity
           id="books"
@@ -202,24 +245,30 @@
           scale="7 7 7"
           position="0 0.3 0"
           rotation="0 90 -2"
-          gpoly="polyid: fkPRnm8iSXI;                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
+          gpoly="polyid: fkPRnm8iSXI;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
         >
                
         </a-entity>
+
              
         <a-entity id="boat" visible="false">
                  
-          <!-- Poly by Google:         https://poly.google.com/view/adoP7kR7S17 -->
+          <!-- Poly by Google:
+         https://poly.google.com/view/adoP7kR7S17 -->
                  
           <a-entity
             scale="0.015 0.015 0.015"
             position="0 0.2 0"
             rotation="0 180 0"
-            gpoly="polyid: adoP7kR7S17;                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
+            gpoly="polyid: adoP7kR7S17;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
           >
                    
           </a-entity>
-                         
+                 
+          <!-- ocean -->
+                 
           <a-ocean
             color="#92E2E2"
             scale="0.12 0.12 0.2"
@@ -231,8 +280,10 @@
           </a-ocean>
                
         </a-entity>
+
              
-        <!-- HEAD apelab:         https://poly.google.com/view/9HNeWBLGiRV -->
+        <!-- HEAD apelab:
+         https://poly.google.com/view/9HNeWBLGiRV -->
              
         <a-entity
           id="lamp"
@@ -240,11 +291,15 @@
           scale="1.2 1.2 1.2"
           position="0 0.3 0"
           rotation="0 -60 0"
-          gpoly="polyid: 9HNeWBLGiRV;                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
+          gpoly="polyid: 9HNeWBLGiRV;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
         >
                
         </a-entity>
-                   
+
+             
+        <!-- text -->
+             
         <a-text
           value="AR Loot Box by Duo Yang"
           scale="0.2 0.2 0.2"
@@ -273,12 +328,174 @@
           color="#FFFF84"
           material="side: double"
         ></a-text>
+
            
       </a-marker-camera>
+
        
     </a-scene>
   </body>
 </html>
 <script>
-  // box const boxBody=document.querySelector("#boxBody"); const boxCovers=[]; const boards=document.querySelectorAll(".board"); const boxRotations=[]; let boxOpen=false; const animToggle={true: "from", false: "to"}; for (let i=0; i < 4; i++){boxCovers[i]=document.querySelector("#boxCover" + i); let rotI=boxCovers[i].getAttribute("rotation"); boxRotations[i]=rotI.x + " " + rotI.y + " " + rotI.z;}// effects const particles=document.querySelector("#particles"); // loot const plant=document.querySelector("#plant"); const book=document.querySelector("#book"); const books=document.querySelector("#books"); const boat=document.querySelector("#boat"); const lamp=document.querySelector("#lamp"); let curLoot=null; const lootList=[plant, book, books, boat, lamp]; const numLoot=lootList.length; // text const openInst=document.querySelector("#openInst"); const closeInst=document.querySelector("#closeInst"); closeInst.setAttribute("visible", false); // UI const startContainer=document.querySelector("#startContainer"); const startAR=document.querySelector("#startAR"); const patience=document.querySelector("#patience"); patience.style.display="none"; // util let animPlay=true; // let instructions=document.createElement('p'); // let debugUI=null; // a hack to put thing on top of the canvas // instructions.id="intro"; // instructions.innerHTML="Try showing an AR.js <a href='https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg' target='_blank'>Hiro marker</a> to the camera"; // window.setTimeout(function(){//   debugUI=document.querySelector('#arjsDebugUIContainer'); //   debugUI.appendChild(instructions); //   console.log("A very clunky hack"); //}, 3000); startAR.addEventListener("click", function (evt){startContainer.style.display="none";}); function chooseLoot(){let rand=Math.floor(Math.random() * numLoot); console.log(rand, numLoot); return lootList[rand];}function animBox(evt){// console.log(evt); // avoid animation being fired twice together if (animPlay){// wait for a while // console.log("disabled to wait", evt); animPlay=false; window.setTimeout(function (){// console.log("enabled", evt); animPlay=true; patience.style.display="none";}, 3000);}else{// do not play animation patience.style.display="block"; return;}// animate box body if (boxOpen){boxBody.setAttribute("visible", boxOpen);}else{window.setTimeout(function (){boxBody.setAttribute("visible", !boxOpen); console.log("disappear");}, 500);}boxBody.setAttribute( "animation", "property: opacity; " + animToggle[!boxOpen] + ": 0.8; " + animToggle[boxOpen] + ": 0; dur: 500" ); // animate box covers boxCovers.forEach(function (el, i){el.setAttribute( "animation", "property: rotation; " + animToggle[!boxOpen] + ": " + boxRotations[i] + "; " + animToggle[boxOpen] + ": 0 0 0; dur: 500" ); boards[i].setAttribute( "animation", "property: color; " + animToggle[!boxOpen] + ": #FFFFFF; " + animToggle[boxOpen] + ": #FFFF84; dur: 500" );}); // show effects particles.setAttribute("particle-system", "enabled", !boxOpen); // change instructions openInst.setAttribute("visible", boxOpen); closeInst.setAttribute("visible", !boxOpen); if (boxOpen){// hide loot curLoot.setAttribute("visible", !boxOpen); curLoot.removeEventListener("click", animBox); // boxCovers.forEach(function(el, i){//   el.removeEventListener('click', animBox); //}); // boxBody.addEventListener('click', animBox, //                          once=true);}else{// show loot curLoot=chooseLoot(); curLoot.setAttribute("visible", !boxOpen); // curLoot.addEventListener('click', animBox, //                          once=true); // boxCovers.forEach(function(el, i){//   el.addEventListener('click', animBox, //                       once=true); // boxBody.removeEventListener('click', //                             animBox); //}); // closeInst.addEventListener('click', animBox);}boxOpen=!boxOpen;}// add click listener to texts to accommodate mobile and older aframe version openInst.addEventListener("click", animBox); closeInst.addEventListener("click", animBox); boxBody.addEventListener("click", animBox);
+  // box
+  const boxBody = document.querySelector("#boxBody");
+  const boxCovers = [];
+  const boards = document.querySelectorAll(".board");
+  const boxRotations = [];
+  let boxOpen = false;
+  const animToggle = { true: "from", false: "to" };
+  for (let i = 0; i < 4; i++) {
+    boxCovers[i] = document.querySelector("#boxCover" + i);
+    let rotI = boxCovers[i].getAttribute("rotation");
+    boxRotations[i] = rotI.x + " " + rotI.y + " " + rotI.z;
+  }
+
+  // effects
+  const particles = document.querySelector("#particles");
+
+  // loot
+  const plant = document.querySelector("#plant");
+  const book = document.querySelector("#book");
+  const books = document.querySelector("#books");
+  const boat = document.querySelector("#boat");
+  const lamp = document.querySelector("#lamp");
+
+  let curLoot = null;
+  const lootList = [plant, book, books, boat, lamp];
+  const numLoot = lootList.length;
+
+  // text
+  const openInst = document.querySelector("#openInst");
+  const closeInst = document.querySelector("#closeInst");
+  closeInst.setAttribute("visible", false);
+
+  // UI
+  const startContainer = document.querySelector("#startContainer");
+  const startAR = document.querySelector("#startAR");
+  const patience = document.querySelector("#patience");
+  patience.style.display = "none";
+
+  // util
+  let animPlay = true;
+
+  // let instructions = document.createElement('p');
+  // let debugUI = null;
+
+  // a hack to put thing on top of the canvas
+  // instructions.id = "intro";
+  // instructions.innerHTML = "Try showing an AR.js <a href='https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg' target='_blank'>Hiro marker</a> to the camera";
+  // window.setTimeout(function() {
+  //   debugUI = document.querySelector('#arjsDebugUIContainer');
+  //   debugUI.appendChild(instructions);
+  //   console.log("A very clunky hack");
+  // }, 3000);
+
+  startAR.addEventListener("click", function (evt) {
+    startContainer.style.display = "none";
+  });
+
+  function chooseLoot() {
+    let rand = Math.floor(Math.random() * numLoot);
+    console.log(rand, numLoot);
+    return lootList[rand];
+  }
+
+  function animBox(evt) {
+    // console.log(evt);
+
+    // avoid animation being fired twice together
+    if (animPlay) {
+      // wait for a while
+      // console.log("disabled to wait", evt);
+      animPlay = false;
+      window.setTimeout(function () {
+        // console.log("enabled", evt);
+        animPlay = true;
+        patience.style.display = "none";
+      }, 3000);
+    } else {
+      // do not play animation
+      patience.style.display = "block";
+      return;
+    }
+
+    // animate box body
+    if (boxOpen) {
+      boxBody.setAttribute("visible", boxOpen);
+    } else {
+      window.setTimeout(function () {
+        boxBody.setAttribute("visible", !boxOpen);
+        console.log("disappear");
+      }, 500);
+    }
+    boxBody.setAttribute(
+      "animation",
+      "property: opacity; " +
+        animToggle[!boxOpen] +
+        ": 0.8; " +
+        animToggle[boxOpen] +
+        ": 0; dur: 500"
+    );
+
+    // animate box covers
+    boxCovers.forEach(function (el, i) {
+      el.setAttribute(
+        "animation",
+        "property: rotation; " +
+          animToggle[!boxOpen] +
+          ": " +
+          boxRotations[i] +
+          "; " +
+          animToggle[boxOpen] +
+          ": 0 0 0; dur: 500"
+      );
+      boards[i].setAttribute(
+        "animation",
+        "property: color; " +
+          animToggle[!boxOpen] +
+          ": #FFFFFF; " +
+          animToggle[boxOpen] +
+          ": #FFFF84; dur: 500"
+      );
+    });
+
+    // show effects
+    particles.setAttribute("particle-system", "enabled", !boxOpen);
+
+    // change instructions
+    openInst.setAttribute("visible", boxOpen);
+    closeInst.setAttribute("visible", !boxOpen);
+
+    if (boxOpen) {
+      // hide loot
+      curLoot.setAttribute("visible", !boxOpen);
+      curLoot.removeEventListener("click", animBox);
+      // boxCovers.forEach(function(el, i) {
+      //   el.removeEventListener('click', animBox);
+      // });
+      // boxBody.addEventListener('click', animBox,
+      //                          once=true);
+    } else {
+      // show loot
+      curLoot = chooseLoot();
+      curLoot.setAttribute("visible", !boxOpen);
+      // curLoot.addEventListener('click', animBox,
+      //                          once=true);
+      // boxCovers.forEach(function(el, i) {
+      //   el.addEventListener('click', animBox,
+      //                       once=true);
+      // boxBody.removeEventListener('click',
+      //                             animBox);
+      // });
+      // closeInst.addEventListener('click', animBox);
+    }
+
+    boxOpen = !boxOpen;
+  }
+
+  // add click listener to texts to accommodate mobile and older aframe version
+  openInst.addEventListener("click", animBox);
+  closeInst.addEventListener("click", animBox);
+
+  boxBody.addEventListener("click", animBox);
 </script>
