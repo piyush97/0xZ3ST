@@ -1,337 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-     
-    <meta charset="UTF-8" />
-     
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     
-    <title>0xZ3ST</title>
-       
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-     
-    <!-- UIkit CSS -->
-     
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>0xz3st</title>
 
-       
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
-     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
-     
-    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
 
-     
-    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-     
-    <script src="https://rawgit.com/Utopiah/googlepoly-load-component/master/googlepoly-load-component.js"></script>
+  <!-- UIkit CSS -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
 
-     
-    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+  <!-- UIkit JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
 
-     
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js"></script>
-     
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
-     
-    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.0-alpha-rc1/aframe/build/aframe-ar-nft.js"></script>
+  <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
 
-     
-    <script src="https://unpkg.com/aframe-event-set-component/dist/aframe-event-set-component.min.js"></script>
-  </head>
+  <script
+          src="aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js>https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
 
-  <body>
-     
-    <div
-      id="startContainer"
-      style="z-index: 1"
-      class="uk-padding-large uk-background-secondary"
-    >
-         
-      <h1 class="uk-heading-primary uk-text-primary">0xZ3ST</h1>
+  <script src="https://rawgit.com/Utopiah/googlepoly-load-component/master/googlepoly-load-component.js"></script>
 
-         
-      <p class="uk-text-muted">
-        This is the first level of the game, scan the marker and answer
-        correctly to reach next level
-      </p>
-         
-      <ol class="uk-margin-medium-top pre">
-             
-        <li>Scan the marker and choose the correct option</li>
-             
-        <li>Use hints if stuck      </li>
-             
-        <li>
-                The more you answer correctly, the more you'll be able to
-          explore and the more points you'll get
-        </li>
-             
-        <li>      In case you're stuck, click help button </li>
-           
-      </ol>
+  <script
+          src="aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js>https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
 
-         
-      <button
-        id="startAR"
-        class="uk-button uk-button-primary uk-button-large uk-margin-top uk-margin-large-bottom"
-      >
-              Ready To Start!    
-      </button>
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js"></script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
-         
-    </div>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.0-alpha-rc1/aframe/build/aframe-ar-nft.js"></script>
 
-     
-    <div id="patience" class="uk-padding-large">
-         
-      <p id="notification" class="uk-label">
-              Genies are still preparing your next level. <br />
-              Please wait a second before retrying.    
-      </p>
-       
-    </div>
+  <script src="https://unpkg.com/aframe-event-set-component/dist/aframe-event-set-component.min.js"></script>
+  <style>
+    .buttons {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
 
-     
-    <a-scene
-      id="scene"
-      style="z-index: 0"
-      cursor="rayOrigin: mouse"
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false"
-    >
-         
-      <a-marker-camera preset="hiro">
-                   
-        <a-box
-          id="boxBody"
-          position="0 0.25 0"
-          scale="1.2 0.6 1.2"
-          opacity="0.8"
-          event-set__mouseenter="color: #FFFF84"
-          event-set__mouseleave="color: #FFFFFF;
-                                  position: 0 0.3 0;
-                                  scale: 1.2 0.6 1.2"
-          event-set__mousedown="position: 0 0.15 0;
-                                 scale: 1.2 0.3 1.2"
-          event-set__mouseup="color: #FFFFFF;
-                               position: 0 0.3 0;
-                               scale: 1.2 0.6 1.2"
-        >
-               
+    .help-button {
+      padding: 0.25em;
+      border-radius: 4px;
+      margin-left: 5px;
+      border: none;
+      background: white;
+      color: black;
+      height: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="buttons">
+    <button class="help-button"
+            onClick="help()">Game Instructions</button>
+    <button class="help-button"
+            onClick="hint()">Hint</button>
+    <button class="help-button"
+            id="score-button"
+            disabled
+            style="width:6em;">Score: 0</p>
+  </div>
+
+  <div id="startContainer"
+       style="z-index: 1"
+       class="uk-padding-large uk-background-secondary">
+
+    <h1 class="uk-heading-primary uk-text-primary">0xZ3ST</h1>
+
+
+    <p class="uk-text-muted">
+      This is the first level of the game, scan the marker and answer
+      correctly to reach next level
+    </p>
+
+    <ol class="uk-margin-medium-top pre">
+
+      <li>Scan the marker and choose the correct option</li>
+
+      <li>Use hints if stuck </li>
+
+      <li>
+        The more you answer correctly, the more you'll be able to
+        explore and the more points you'll get
+      </li>
+
+      <li> In case you're stuck, click help button </li>
+
+    </ol>
+
+
+    <button id="startAR"
+            class="uk-button uk-button-primary uk-button-large uk-margin-top uk-margin-large-bottom">
+      Ready To Start!
+    </button>
+
+
+  </div>
+
+  <div id="patience"
+       class="uk-padding-large">
+    <p id="notification"
+       class="uk-label">
+      Genies are still preparing your next level. <br />
+      Please wait a second before retrying.
+    </p>
+  </div>
+
+  <a-scene id="scene"
+           style="z-index: 0"
+           cursor="rayOrigin: mouse"
+           embedded
+           arjs="sourceType: webcam; debugUIEnabled: false">
+    <a-marker-camera preset="hiro">
+      <!-- loot box -->
+      <a-box id="boxBody"
+             position="0 0.25 0"
+             scale="1.2 0.6 1.2"
+             opacity="0.8"
+             event-set__mouseenter="color: #FFFF84"
+             event-set__mouseleave="color: #FFFFFF;
+                                  position: 0 0.3 0;
+                                  scale: 1.2 0.6 1.2"
+             event-set__mousedown="position: 0 0.15 0;
+                                 scale: 1.2 0.3 1.2"
+             event-set__mouseup="color: #FFFFFF;
+                               position: 0 0.3 0;
+                               scale: 1.2 0.6 1.2">
+      </a-box>
+
+      <a-entity id="boxCover0"
+                position="0.6 0.25 0"
+                rotation="0 0 180">
+        <a-box class="board"
+               position="0.5 0 0"
+               scale="0.8 0.05 1"
+               opacity="0.5">
         </a-box>
+      </a-entity>
+      <a-entity id="boxCover1"
+                position="-0.6 0.25 0"
+                rotation="0 0 -180">
+        <a-box class="board"
+               position="-0.5 0 0"
+               scale="0.8 0.05 1"
+               opacity="0.5">
+        </a-box>
+      </a-entity>
+      <a-entity id="boxCover2"
+                position="0 0.25 0.6"
+                rotation="-180 0 0">
+        <a-box class="board"
+               position="0 0 0.5"
+               scale="1 0.05 0.8"
+               opacity="0.5">
+        </a-box>
+      </a-entity>
+      <a-entity id="boxCover3"
+                position="0 0.25 -0.6"
+                rotation="180 0 0">
+        <a-box class="board"
+               position="0 0 -0.5"
+               scale="1 0.05 0.8"
+               opacity="0.5">
+        </a-box>
+      </a-entity>
 
-             
-        <a-entity id="boxCover0" position="0.6 0.25 0" rotation="0 0 180">
-                 
-          <a-box
-            class="board"
-            position="0.5 0 0"
-            scale="0.8 0.05 1"
-            opacity="0.5"
-          >
-                   
-          </a-box>
-               
-        </a-entity>
-             
-        <a-entity id="boxCover1" position="-0.6 0.25 0" rotation="0 0 -180">
-                 
-          <a-box
-            class="board"
-            position="-0.5 0 0"
-            scale="0.8 0.05 1"
-            opacity="0.5"
-          >
-                   
-          </a-box>
-               
-        </a-entity>
-             
-        <a-entity id="boxCover2" position="0 0.25 0.6" rotation="-180 0 0">
-                 
-          <a-box
-            class="board"
-            position="0 0 0.5"
-            scale="1 0.05 0.8"
-            opacity="0.5"
-          >
-                   
-          </a-box>
-               
-        </a-entity>
-             
-        <a-entity id="boxCover3" position="0 0.25 -0.6" rotation="180 0 0">
-                 
-          <a-box
-            class="board"
-            position="0 0 -0.5"
-            scale="1 0.05 0.8"
-            opacity="0.5"
-          >
-                   
-          </a-box>
-               
-        </a-entity>
+      <!-- effects -->
+      <a-entity id="particles"
+                position="0 0 0"
+                particle-system="enabled: false;
+                               color: #EEFF00, #FF8800;
+                               particleCount: 50;
+                               maxParticleCount: 200;
+                               maxAge: 2;
+                               duration: 1;
+                               velocityValue: 0 5 0;
+                               velocitySpread: 5 5 5;
+                               accelerationSpread: 5 0 5;
+              texture: aframe-particle-system-component@1.0.x/dist/images/star.png>https://unpkg.com/aframe-particle-system-component@1.0.x/dist/images/star.png">
+      </a-entity>
 
-             
-        <!-- effects -->
-             
-        <a-entity
-          id="particles"
-          position="0 0 0"
-          particle-system="enabled: false;
-                               color: #EEFF00, #FF8800;
-                               particleCount: 50;
-                               maxParticleCount: 200;
-                               maxAge: 2;
-                               duration: 1;
-                               velocityValue: 0 5 0;
-                               velocitySpread: 5 5 5;
-                               accelerationSpread: 5 0 5;
-              texture: https://unpkg.com/aframe-particle-system-component@1.0.x/dist/images/star.png"
-        >
-               
+      <!-- loot -->
+      <!-- Alex “SAFFY” Safayan:
+         https://poly.google.com/view/bVepm2yfJTh -->
+      <a-entity id="plant"
+                visible="false"
+                scale="1.6 1.6 1.6"
+                position="0 0.3 0"
+                gpoly="polyid: bVepm2yfJTh;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;">
+      </a-entity>
+
+      <!-- Anastasiia Ku:
+         https://poly.google.com/view/0-_UGETLPsX -->
+      <a-entity id="book"
+                visible="false"
+                scale="1.6 1.6 1.6"
+                position="0 0.3 0"
+                rotation="6 0 45"
+                gpoly="polyid: 0-_UGETLPsX;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;">
+      </a-entity>
+
+      <!-- Tiff Eidmann:
+         https://poly.google.com/view/fkPRnm8iSXI -->
+      <a-entity id="books"
+                visible="false"
+                scale="7 7 7"
+                position="0 0.3 0"
+                rotation="0 90 -2"
+                gpoly="polyid: fkPRnm8iSXI;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;">
+      </a-entity>
+
+      <a-entity id="boat"
+                visible="false">
+        <!-- Poly by Google:
+         https://poly.google.com/view/adoP7kR7S17 -->
+        <a-entity scale="0.015 0.015 0.015"
+                  position="0 0.2 0"
+                  rotation="0 180 0"
+                  gpoly="polyid: adoP7kR7S17;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;">
         </a-entity>
+        <!-- ocean -->
+        <a-ocean color="#92E2E2"
+                 scale="0.12 0.12 0.2"
+                 position="0 0.19 0"
+                 density="5"
+                 speed="2">
+        </a-ocean>
+      </a-entity>
 
-                         
-        <a-entity
-          id="plant"
-          visible="false"
-          scale="1.6 1.6 1.6"
-          position="0 0.3 0"
-          gpoly="polyid: bVepm2yfJTh;
-                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
-        >
-               
-        </a-entity>
+      <!-- HEAD apelab:
+         https://poly.google.com/view/9HNeWBLGiRV -->
+      <a-entity id="lamp"
+                visible="false"
+                scale="1.2 1.2 1.2"
+                position="0 0.3 0"
+                rotation="0 -60 0"
+                gpoly="polyid: 9HNeWBLGiRV;
+                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;">
+      </a-entity>
 
-             
-        <!-- Anastasiia Ku:
-         https://poly.google.com/view/0-_UGETLPsX -->
-             
-        <a-entity
-          id="book"
-          visible="false"
-          scale="1.6 1.6 1.6"
-          position="0 0.3 0"
-          rotation="6 0 45"
-          gpoly="polyid: 0-_UGETLPsX;
-                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
-        >
-               
-        </a-entity>
+      <!-- text -->
 
-             
-        <!-- Tiff Eidmann:
-         https://poly.google.com/view/fkPRnm8iSXI -->
-             
-        <a-entity
-          id="books"
-          visible="false"
-          scale="7 7 7"
-          position="0 0.3 0"
-          rotation="0 90 -2"
-          gpoly="polyid: fkPRnm8iSXI;
-                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
-        >
-               
-        </a-entity>
+      <a-text id="openInst"
+              value="Click to open"
+              scale="0.6 0.6 0.6"
+              position="-0.4 0.65 0"
+              rotation="-90 0 0"
+              color="#000000"
+              material="side: double"></a-text>
+      <a-text id="closeInst"
+              value="Click to retry"
+              scale="0.6 0.6 0.6"
+              position="-0.4 0.65 0"
+              rotation="-90 0 0"
+              color="#FFFF84"
+              material="side: double"></a-text>
+    </a-marker-camera>
+  </a-scene>
+</body>
 
-             
-        <a-entity id="boat" visible="false">
-                 
-          <!-- Poly by Google:
-         https://poly.google.com/view/adoP7kR7S17 -->
-                 
-          <a-entity
-            scale="0.015 0.015 0.015"
-            position="0 0.2 0"
-            rotation="0 180 0"
-            gpoly="polyid: adoP7kR7S17;
-                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
-          >
-                   
-          </a-entity>
-                 
-          <!-- ocean -->
-                 
-          <a-ocean
-            color="#92E2E2"
-            scale="0.12 0.12 0.2"
-            position="0 0.19 0"
-            density="5"
-            speed="2"
-          >
-                   
-          </a-ocean>
-               
-        </a-entity>
-
-             
-        <!-- HEAD apelab:
-         https://poly.google.com/view/9HNeWBLGiRV -->
-             
-        <a-entity
-          id="lamp"
-          visible="false"
-          scale="1.2 1.2 1.2"
-          position="0 0.3 0"
-          rotation="0 -60 0"
-          gpoly="polyid: 9HNeWBLGiRV;
-                     API_KEY: AIzaSyDsovdrekNH2A-NiKfMtMWA8LXebZQ41nk;"
-        >
-               
-        </a-entity>
-
-             
-        <!-- text -->
-             
-        <a-text
-          value="AR Loot Box by Duo Yang"
-          scale="0.2 0.2 0.2"
-          position="0 0.65 0.5"
-          rotation="-90 0 0"
-          color="#445EA0"
-          material="side: double"
-        ></a-text>
-             
-        <a-text
-          id="openInst"
-          value="Click to open"
-          scale="0.6 0.6 0.6"
-          position="-0.4 0.65 0"
-          rotation="-90 0 0"
-          color="#000000"
-          material="side: double"
-        ></a-text>
-             
-        <a-text
-          id="closeInst"
-          value="Click to retry"
-          scale="0.6 0.6 0.6"
-          position="-0.4 0.65 0"
-          rotation="-90 0 0"
-          color="#FFFF84"
-          material="side: double"
-        ></a-text>
-
-           
-      </a-marker-camera>
-
-       
-    </a-scene>
-  </body>
 </html>
 <script>
+  let score = 0;
+  let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
+  function hint() {
+    Swal.fire({
+      title: 'Are you sure!',
+      text: 'It costs 10 Z3ST points',
+      icon: 'warning',
+      confirmButtonText: 'Okay Continue',
+      showCancelButton: true,
+
+    }).then(
+      (result) => {
+        Swal.fire({
+          title: 'This place is the one where you read books!',
+          confirmButtonText: 'Okay',
+        })
+        score -= 10;
+        let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
+
+      }
+    )
+  }
+  function help() {
+    alert("You want help? Chal hatt")
+  }
   // box
   const boxBody = document.querySelector("#boxBody");
   const boxCovers = [];
@@ -348,16 +321,17 @@
   // effects
   const particles = document.querySelector("#particles");
 
-  // loot
-  const plant = document.querySelector("#plant");
-  const book = document.querySelector("#book");
-  const books = document.querySelector("#books");
-  const boat = document.querySelector("#boat");
-  const lamp = document.querySelector("#lamp");
+  // levels
+  // const plant = document.querySelector("#plant");
+  // const book = document.querySelector("#book");
+  // const books = document.querySelector("#books");
+  // const boat = document.querySelector("#boat");
+  // const lamp = document.querySelector("#lamp");
 
   let curLoot = null;
-  const lootList = [plant, book, books, boat, lamp];
-  const numLoot = lootList.length;
+  //Will be provided by team members
+  const levelList = [];
+  const level = levelList.length;
 
   // text
   const openInst = document.querySelector("#openInst");
@@ -373,14 +347,26 @@
   // util
   let animPlay = true;
 
+  // let instructions = document.createElement('p');
+  // let debugUI = null;
+
+  // a hack to put thing on top of the canvas
+  // instructions.id = "intro";
+  // instructions.innerHTML = "Try showing an AR.js <a href='https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg' target='_blank'>Hiro marker</a> to the camera";
+  // window.setTimeout(function() {
+  //   debugUI = document.querySelector('#arjsDebugUIContainer');
+  //   debugUI.appendChild(instructions);
+  //   console.log("A very clunky hack");
+  // }, 3000);
+
   startAR.addEventListener("click", function (evt) {
     startContainer.style.display = "none";
   });
 
-  function chooseLoot() {
-    let rand = Math.floor(Math.random() * numLoot);
-    console.log(rand, numLoot);
-    return lootList[rand];
+  function chooseLevel() {
+    let rand = Math.floor(Math.random() * level);
+    console.log(rand, level);
+    return levelList[rand];
   }
 
   function animBox(evt) {
@@ -414,10 +400,10 @@
     boxBody.setAttribute(
       "animation",
       "property: opacity; " +
-        animToggle[!boxOpen] +
-        ": 0.8; " +
-        animToggle[boxOpen] +
-        ": 0; dur: 500"
+      animToggle[!boxOpen] +
+      ": 0.8; " +
+      animToggle[boxOpen] +
+      ": 0; dur: 500"
     );
 
     // animate box covers
@@ -425,20 +411,20 @@
       el.setAttribute(
         "animation",
         "property: rotation; " +
-          animToggle[!boxOpen] +
-          ": " +
-          boxRotations[i] +
-          "; " +
-          animToggle[boxOpen] +
-          ": 0 0 0; dur: 500"
+        animToggle[!boxOpen] +
+        ": " +
+        boxRotations[i] +
+        "; " +
+        animToggle[boxOpen] +
+        ": 0 0 0; dur: 500"
       );
       boards[i].setAttribute(
         "animation",
         "property: color; " +
-          animToggle[!boxOpen] +
-          ": #FFFFFF; " +
-          animToggle[boxOpen] +
-          ": #FFFF84; dur: 500"
+        animToggle[!boxOpen] +
+        ": #FFFFFF; " +
+        animToggle[boxOpen] +
+        ": #FFFF84; dur: 500"
       );
     });
 
@@ -453,24 +439,16 @@
       // hide loot
       curLoot.setAttribute("visible", !boxOpen);
       curLoot.removeEventListener("click", animBox);
+
       // boxCovers.forEach(function(el, i) {
-      //   el.removeEventListener('click', animBox);
+      //   el.removeEventListener('click', animBox);
       // });
       // boxBody.addEventListener('click', animBox,
-      //                          once=true);
+      //                          once=true);
     } else {
-      // show loot
-      curLoot = chooseLoot();
+      curLoot = chooseLevel();
       curLoot.setAttribute("visible", !boxOpen);
-      // curLoot.addEventListener('click', animBox,
-      //                          once=true);
-      // boxCovers.forEach(function(el, i) {
-      //   el.addEventListener('click', animBox,
-      //                       once=true);
-      // boxBody.removeEventListener('click',
-      //                             animBox);
-      // });
-      // closeInst.addEventListener('click', animBox);
+
     }
 
     boxOpen = !boxOpen;
