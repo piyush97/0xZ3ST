@@ -236,5 +236,3 @@ function validate_field(field) {
     return true;
   }
 }
-
-
