@@ -1,0 +1,21 @@
+{
+  "name": "0xZ3ST",
+  "version": "0.1.0",
+  "scripts": {
+    "docs": "jsdoc -c config.json ./README.md -d ./docs index.js",
+    "test": "jest"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/piyush97/0xZ3ST",
+  "author": "Piyush Mehta <me@piyushmehta.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "firebase": "^9.6.7",
+    "jest": "^27.5.1",
+    "jsdoc": "^3.6.10",
+    "rewire": "^6.0.0"
+  },
+  "dependencies": {
+    "docdash": "^1.2.0"
+  }
+}
