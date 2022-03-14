@@ -3,7 +3,12 @@
  * Initialize Firebase with the config.
  */
 var firebaseConfig = {
-  // Paste credentials here
+  apiKey: "AIzaSyA9fiRhKdGY8Lp9xk5mH3Vs_djEs340yOw",
+  authDomain: "first-project-708bc.firebaseapp.com",
+  projectId: "first-project-708bc",
+  storageBucket: "first-project-708bc.appspot.com",
+  messagingSenderId: "627465432811",
+  appId: "1:627465432811:web:af76d267f1ba82b6c318ae"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
