@@ -3,6 +3,38 @@
   <head>
     <meta charset="utf-8" />
     <title>0xZ3ST</title>
+    <style>
+      .login-with-google-btn {
+        transition: background-color 0.3s, box-shadow 0.3s;
+        padding: 12px 16px 12px 42px;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+        color: #757575;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: white;
+        background-repeat: no-repeat;
+        background-position: 12px 11px;
+      }
+      .login-with-google-btn:hover {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
+      }
+      .login-with-google-btn:active {
+        background-color: #eeeeee;
+      }
+      .login-with-google-btn:focus {
+        outline: none;
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
+          0 0 0 3px #c8dafc;
+      }
+      .login-with-google-btn:disabled {
+        filter: grayscale(100%);
+        background-color: #ebebeb;
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+        cursor: not-allowed;
+      }
+    </style>
 
     <!-- CSS (Tailwind; utility CDN Call) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -57,14 +89,23 @@
         >
           Sign In
         </button>
+
+        <button
+          type="button"
+          class="login-with-google-btn w-full"
+          onclick="signInWithGoogle()"
+        >
+          Sign in with Google
+        </button>
       </div>
     </div>
   </body>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Our script must be loaded after firebase references -->
   <script src="index.js"></script>
