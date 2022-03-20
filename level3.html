@@ -17,13 +17,13 @@
         <a-text
           position="0 2 0"
           rotation="0 0 0"
-          value="Your question will come here"
+          value="Which building has a book shop?"
           geometry="primitive:plane;"
           align="center"
           material="color: #111; opacity: 0.01; transparent: true;"
         ></a-text>
         <a-text
-          value="Wrong Answer"
+          value="Lambton Tower"
           class="clickable"
           position="0 1 0"
           rotation="0 0 0"
@@ -32,7 +32,7 @@
           material="color: green; opacity: 0.09; transparent: true;"
         ></a-text>
         <a-text
-          value="Correct Answer"
+          value="CAW"
           position="0 0 0"
           rotation="0 0 0"
           class="clickable2"
@@ -65,12 +65,11 @@
       .addEventListener("click", function (evt) {
         Swal.fire({
           title: "Wrong Answer!",
-          text: "Press continue to play",
+          text: "Students get their uWincard from there",
           icon: "error",
           confirmButtonText: "continue",
         });
-
-        window.location.href = "/level1.html";
+        score = score - 10;
       });
 
     sceneEl
@@ -82,7 +81,8 @@
           icon: "success",
           confirmButtonText: "continue",
         });
-        score = score - 10;
+
+        window.location.href = "/level4.html";
       });
   </script>
 </html>
