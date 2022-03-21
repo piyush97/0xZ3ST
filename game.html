@@ -46,8 +46,7 @@
             onclick="hint()">Hint</button>
     <button class="help-button"
             id="score-button"
-            disabled
-            style="width:6em;">Score: 0</p>
+            style="width:6em;"></p>
   </div>
   <a-scene embedded
            arjs>
@@ -91,40 +90,14 @@
   </a-scene>
 </body>
 <script>
-  var sceneEl = document.querySelector("a-scene");
-  sceneEl
-    .querySelector(".clickable")
-    .addEventListener("click", function (evt) {
-      Swal.fire({
-        title: "Wrong Answer!",
-        text: "Press continue to play",
-        icon: "error",
-        confirmButtonText: "continue",
-      });
-
-      window.location.href = `/level1.html?score=${score}`;
-    });
-
-  sceneEl
-    .querySelector(".clickable2")
-    .addEventListener("click", function (evt) {
-      Swal.fire({
-        title: "Correct Answer!",
-        text: "Press continue to play",
-        icon: "success",
-        confirmButtonText: "continue",
-      });
-      score = score - 10;
-    });
-</script>
-<script>
   let no_of_hint = 0;
   let score = 0;
   let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
   let Swal_hint_title = 'Are you sure!';
   let Swal_hint_warning_text = 'It costs Z3ST points';
   let Swal_hint_warning_text_button = 'Okay Continue';
-  let question_text = 'This place is the one where you read books!';
+  let question_text = 'This is where hints will come';
+  scoreButton.innerText = "Score: " + score;
   function hint() {
     Swal.fire({
       title: Swal_hint_title,
@@ -156,6 +129,42 @@
       }
     )
   }
+
+  var sceneEl = document.querySelector("a-scene");
+  sceneEl
+    .querySelector(".clickable")
+    .addEventListener("click", function (evt) {
+      Swal.fire({
+        title: "Wrong Answer!",
+        text: "Press continue to play",
+        icon: "error",
+        confirmButtonText: "continue",
+      });
+      score = score - 10;
+    });
+
+  sceneEl
+    .querySelector(".clickable2")
+    .addEventListener("click", function (evt) {
+      Swal.fire({
+        title: "Correct Answer!",
+        showDenyButton: true,
+        text: "Press continue to play",
+        icon: "success",
+        confirmButtonText: "Continue",
+        denyButtonText: "Play Again",
+      }).then((result) => {
+        score = score + 10;
+
+        if (result.isConfirmed) {
+          window.location.href = `/level1.html?score=${score}`;
+        }
+        else if (result.isDenied) {
+          window.location.href = `/game.html?score=${score}`;
+        }
+      })
+    })
+
 </script>
 
 </html>
