@@ -90,13 +90,13 @@
 </body>
 <script>
   let no_of_hint = 0;
-  let score = 0;
+  const urlParams = new URLSearchParams(window.location.search);
+  let score = urlParams.get('score');
   let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
   let Swal_hint_title = 'Are you sure!';
   let Swal_hint_warning_text = 'It costs Z3ST points';
   let Swal_hint_warning_text_button = 'Okay Continue';
   let question_text = 'This is where hints will come';
-  scoreButton.innerText = "Score: " + score;
   function hint() {
     Swal.fire({
       title: Swal_hint_title,
