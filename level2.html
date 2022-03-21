@@ -1,88 +1,167 @@
 <!DOCTYPE html>
 <html>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<!-- we import arjs version without NFT but with marker + location based support -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
-  <!-- SweetAlert -->
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- SweetAlert -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <!-- events -->
-  <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
+<!-- events -->
+<script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
+<style>
+  .buttons {
+    position: relative;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
 
-  <body style="margin: 0px; overflow: hidden">
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <a-text
-          position="0 2 0"
-          rotation="0 0 0"
-          value="Which ten-storey building is home to first year students?"
-          geometry="primitive:plane;"
-          align="center"
-          material="color: #111; opacity: 0.01; transparent: true;"
-        ></a-text>
-        <a-text
-          value="MacDonald Hall"
-          class="clickable"
-          position="0 1 0"
-          rotation="0 0 0"
-          geometry="primitive:plane"
-          align="center"
-          material="color: green; opacity: 0.09; transparent: true;"
-        ></a-text>
-        <a-text
-          value="Chrysler Hall"
-          position="0 0 0"
-          rotation="0 0 0"
-          class="clickable2"
-          geometry="primitive:plane"
-          align="center"
-          material="color: red; opacity: 0.09; transparent: true;"
-        ></a-text>
-      </a-marker>
-      <a-entity camera cursor="rayOrigin:mouse" look-controls>
-        <!-- working cursor -->
-        <a-entity
-          look-controls
-          wasd-controls
-          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
-          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
-          cursor="fuse: false; fuseTimeout: 500"
-          position="0 0 -1"
-          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-          material="color: gray; shader: flat; opacity: 1"
-        >
-        </a-entity>
+  }
+
+  .help-button {
+    padding: 0.25em;
+    border-radius: 4px;
+    margin-left: 5px;
+    border: none;
+    background: white;
+    color: black;
+    height: 2em;
+    cursor: pointer;
+  }
+</style>
+
+<body style="margin: 0px; overflow: hidden">
+  <div class="buttons">
+    <button class="help-button"
+            onclick="help()">Game Instructions</button>
+    <button class="help-button"
+            onclick="hint()">Hint</button>
+    <button class="help-button"
+            id="score-button"
+            style="width:6em;"></p>
+  </div>
+  <a-scene embedded
+           arjs>
+    <a-marker preset="hiro">
+      <a-text position="0 2 0"
+              rotation="0 0 0"
+              value="Which ten-storey building is home to first year students?"
+              geometry="primitive:plane;"
+              align="center"
+              material="color: #111; opacity: 0.01; transparent: true;"></a-text>
+      <a-text value="MacDonald Hall"
+              class="clickable"
+              position="0 1 0"
+              rotation="0 0 0"
+              geometry="primitive:plane"
+              align="center"
+              material="color: green; opacity: 0.09; transparent: true;"></a-text>
+      <a-text value="Chrysler Hall"
+              position="0 0 0"
+              rotation="0 0 0"
+              class="clickable2"
+              geometry="primitive:plane"
+              align="center"
+              material="color: red; opacity: 0.09; transparent: true;"></a-text>
+    </a-marker>
+    <a-entity camera
+              cursor="rayOrigin:mouse"
+              look-controls>
+      <!-- working cursor -->
+      <a-entity look-controls
+                wasd-controls
+                animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+                animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+                cursor="fuse: false; fuseTimeout: 500"
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                material="color: gray; shader: flat; opacity: 1">
       </a-entity>
-    </a-scene>
-  </body>
-  <script>
-    var sceneEl = document.querySelector("a-scene");
-    sceneEl
-      .querySelector(".clickable")
-      .addEventListener("click", function (evt) {
+    </a-entity>
+  </a-scene>
+</body>
+<script>
+  let no_of_hint = 0;
+  let score = 0;
+  let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
+  let Swal_hint_title = 'Are you sure!';
+  let Swal_hint_warning_text = 'It costs Z3ST points';
+  let Swal_hint_warning_text_button = 'Okay Continue';
+  let question_text = 'This is where hints will come';
+  scoreButton.innerText = "Score: " + score;
+  function hint() {
+    Swal.fire({
+      title: Swal_hint_title,
+      text: Swal_hint_warning_text,
+      icon: 'warning',
+      confirmButtonText: Swal_hint_warning_text_button,
+      showCancelButton: true,
+
+    }).then(
+      (result) => {
         Swal.fire({
-          title: "Wrong Answer!",
-          text: "It's a car brand name!",
-          icon: "error",
-          confirmButtonText: "continue",
-        });
-        score = score - 10;
+          title: question_text,
+          confirmButtonText: 'Okay',
+        })
+        no_of_hint += 1;
+        if (no_of_hint == 1) {
+          score -= 10;
+
+        }
+        else if (no_of_hint == 2) {
+          score -= 15;
+        }
+        else if (no_of_hint == 3) {
+          score -= 30;
+
+        }
+        let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
+
+      }
+    )
+  }
+
+  var sceneEl = document.querySelector("a-scene");
+  sceneEl
+    .querySelector(".clickable")
+    .addEventListener("click", function (evt) {
+      Swal.fire({
+        title: "Wrong Answer!",
+        text: "It's a car brand name!",
+        icon: "error",
+        confirmButtonText: "continue",
+      });
+      score = score - 10;
+    });
+
+  sceneEl
+    .querySelector(".clickable2")
+    .addEventListener("click", function (evt) {
+      Swal.fire({
+        title: "Correct Answer!",
+        text: "Press continue to play",
+        icon: "success",
+        confirmButtonText: "continue",
+      }).then((result) => {
+        score = score + 10;
+
+        if (result.isConfirmed) {
+          window.location.href = `/level3.html?score=${score}`;
+        }
+        else if (result.isDenied) {
+          window.location.href = `/level2.html?score=${score}`;
+        }
       });
 
-    sceneEl
-      .querySelector(".clickable2")
-      .addEventListener("click", function (evt) {
-        Swal.fire({
-          title: "Correct Answer!",
-          text: "Press continue to play",
-          icon: "success",
-          confirmButtonText: "continue",
-        });
+    });
+</script>
 
-        window.location.href = "/level3.html";
-      });
-  </script>
 </html>

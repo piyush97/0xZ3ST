@@ -45,7 +45,7 @@
             onclick="hint()">Hint</button>
     <button class="help-button"
             id="score-button"
-            style="width:6em;">Score: 0</p>
+            style="width:6em;"></p>
   </div>
   <a-scene embedded
            arjs>
@@ -151,10 +151,16 @@
         text: "Press continue to play",
         icon: "success",
         confirmButtonText: "continue",
-      });
-      score = score + 10;
+      }).then((result) => {
+        score = score + 10;
 
-      window.location.href = "/level2.html?score=${score}";
+        if (result.isConfirmed) {
+          window.location.href = `/level2.html?score=${score}`;
+        }
+        else if (result.isDenied) {
+          window.location.href = `/level1.html?score=${score}`;
+        }
+      });
     });
 </script>
 
