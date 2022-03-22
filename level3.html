@@ -8,9 +8,12 @@
 <!-- SweetAlert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- CSS (Tailwind; utility CDN Call) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
 <!-- events -->
 <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
-<style>
+<!--<style>
   .buttons {
     position: relative;
     bottom: 0;
@@ -35,14 +38,14 @@
     cursor: pointer;
   }
 </style>
-
+-->
 <body style="margin: 0px; overflow: hidden">
-  <div class="buttons">
-    <button class="help-button"
+  <div class="relative bottom-0 top-0 left-0 w-full h-20 flex justify-center items-center z-10">
+    <button class="p-1 rounded ml-1 bg-white text-black h-8 cursor-pointer border-solid"
             onclick="help()">Game Instructions</button>
-    <button class="help-button"
+    <button class="p-1 rounded ml-1 bg-white text-black h-8 cursor-pointer border-solid"
             onclick="hint()">Hint</button>
-    <button class="help-button"
+    <button class="p-1 rounded ml-1 bg-white text-black h-8 cursor-pointer border-solid"
             id="score-button"
             style="width:6em;"></p>
   </div>
