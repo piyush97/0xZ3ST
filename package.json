@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "scripts": {
     "docs": "jsdoc -c config.json ./README.md -d ./docs index.js",
-    "test": "jest"
+    "test": "jest",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/piyush97/0xZ3ST",
   "author": "Piyush Mehta <me@piyushmehta.com>",
   "license": "MIT",
@@ -13,9 +15,11 @@
     "firebase": "^9.6.7",
     "jest": "^27.5.1",
     "jsdoc": "^3.6.10",
+    "nodemon": "^2.0.15",
     "rewire": "^6.0.0"
   },
   "dependencies": {
-    "docdash": "^1.2.0"
+    "docdash": "^1.2.0",
+    "express": "^4.17.3"
   }
 }
