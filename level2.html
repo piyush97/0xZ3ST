@@ -22,6 +22,7 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
+
   }
 
   .help-button {
@@ -35,7 +36,6 @@
     cursor: pointer;
   }
 </style>
-
 
 <body style="margin: 0px; overflow: hidden">
   <div class="buttons">
@@ -52,24 +52,24 @@
     <a-marker preset="hiro">
       <a-text position="0 2 0"
               rotation="0 0 0"
-              value="Your question will come here"
+              value="Which ten-storey building is home to first year students?"
               geometry="primitive:plane;"
               align="center"
               material="color: #111; opacity: 0.01; transparent: true;"></a-text>
-      <a-text value="Wrong Answer"
+      <a-text value="MacDonald Hall"
               class="clickable"
               position="0 1 0"
               rotation="0 0 0"
               geometry="primitive:plane"
               align="center"
-              material="color: red; opacity: 0.09; transparent: true;"></a-text>
-      <a-text value="Correct Answer"
+              material="color: green; opacity: 0.09; transparent: true;"></a-text>
+      <a-text value="Chrysler Hall"
               position="0 0 0"
               rotation="0 0 0"
               class="clickable2"
               geometry="primitive:plane"
               align="center"
-              material="color: green; opacity: 0.09; transparent: true;"></a-text>
+              material="color: red; opacity: 0.09; transparent: true;"></a-text>
     </a-marker>
     <a-entity camera
               cursor="rayOrigin:mouse"
@@ -90,13 +90,13 @@
 </body>
 <script>
   let no_of_hint = 0;
-  let score = 0;
+  const urlParams = new URLSearchParams(window.location.search);
+  let score = urlParams.get('score');
   let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
   let Swal_hint_title = 'Are you sure!';
   let Swal_hint_warning_text = 'It costs Z3ST points';
   let Swal_hint_warning_text_button = 'Okay Continue';
   let question_text = 'This is where hints will come';
-  scoreButton.innerText = "Score: " + score;
   function hint() {
     Swal.fire({
       title: Swal_hint_title,
@@ -135,7 +135,7 @@
     .addEventListener("click", function (evt) {
       Swal.fire({
         title: "Wrong Answer!",
-        text: "Press continue to play",
+        text: "It's a car brand name!",
         icon: "error",
         confirmButtonText: "continue",
       });
@@ -147,23 +147,21 @@
     .addEventListener("click", function (evt) {
       Swal.fire({
         title: "Correct Answer!",
-        showDenyButton: true,
         text: "Press continue to play",
         icon: "success",
-        confirmButtonText: "Continue",
-        denyButtonText: "Play Again",
+        confirmButtonText: "continue",
       }).then((result) => {
         score = score + 10;
 
         if (result.isConfirmed) {
-          window.location.href = `/level1.html?score=${score}`;
+          window.location.href = `/level3.html?score=${score}`;
         }
         else if (result.isDenied) {
-          window.location.href = `/game.html?score=${score}`;
+          window.location.href = `/level2.html?score=${score}`;
         }
-      })
-    })
+      });
 
+    });
 </script>
 
 </html>
