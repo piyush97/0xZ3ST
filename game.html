@@ -101,7 +101,7 @@
           score -= 30;
 
         }
-        scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
+        let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
 
       }
     )
@@ -134,12 +134,9 @@
         score +=  10;
 
         if (result.isConfirmed) {
-          scoreButton = document.getElementById('score-button').value = ' ';
-
           window.location.href = `/level1.html?score=${score}`;
         }
         else if (result.isDenied) {
-          scoreButton = document.getElementById('score-button').value = ' ';
           window.location.href = `/game.html?score=${score}`;
         }
       })
