@@ -13,40 +13,15 @@
 
 <!-- events -->
 <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
-<!--<style>
-  .buttons {
-    position: relative;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-  }
 
-  .help-button {
-    padding: 0.25em;
-    border-radius: 4px;
-    margin-left: 5px;
-    border: none;
-    background: white;
-    color: black;
-    height: 2em;
-    cursor: pointer;
-  }
-</style>
--->
 
 <body style="margin: 0px; overflow: hidden">
   <div class="relative bottom-0 top-0 left-0 w-full h-20 flex justify-center items-center z-10">
-    <button class="rounded ml-1 bg-white text-black h-8 p-1 cursor-pointer border-solid"
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
             onclick="help()">Game Instructions</button>
-    <button class="rounded ml-1 bg-white text-black h-8 p-1 cursor-pointer border-solid"
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
             onclick="hint()">Hint</button>
-    <button class="rounded ml-1 bg-white text-black h-8 p-1 cursor-pointer border-solid"
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
             id="score-button"
             style="width:6em;"></p>
   </div>
@@ -126,7 +101,7 @@
           score -= 30;
 
         }
-        let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
+        scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
 
       }
     )
@@ -156,12 +131,15 @@
         confirmButtonText: "Continue",
         denyButtonText: "Play Again",
       }).then((result) => {
-        score = score + 10;
+        score +=  10;
 
         if (result.isConfirmed) {
+          scoreButton = document.getElementById('score-button').value = ' ';
+
           window.location.href = `/level1.html?score=${score}`;
         }
         else if (result.isDenied) {
+          scoreButton = document.getElementById('score-button').value = ' ';
           window.location.href = `/game.html?score=${score}`;
         }
       })
