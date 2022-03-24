@@ -51,18 +51,18 @@
     <a-marker preset="hiro">
       <a-text position="0 2 0"
               rotation="0 0 0"
-              value="Which building has a book shop?"
+              value="This place is named after one of the best automobile manufacturer company?"
               geometry="primitive:plane;"
               align="center"
               material="color: #111; opacity: 0.01; transparent: true;"></a-text>
-      <a-text value="Lambton Tower"
+      <a-text value="Chrysler Hall"
               class="clickable"
               position="0 1 0"
               rotation="0 0 0"
               geometry="primitive:plane"
               align="center"
               material="color: green; opacity: 0.09; transparent: true;"></a-text>
-      <a-text value="CAW"
+      <a-text value="Erie Hall"
               position="0 0 0"
               rotation="0 0 0"
               class="clickable2"
@@ -153,10 +153,10 @@
         score = score + 10;
 
         if (result.isConfirmed) {
-          window.location.href = `/level4.html?score=${score}`;
+          window.location.href = `/level8.html?score=${score}`;
         }
         else if (result.isDenied) {
-          window.location.href = `/level3.html?score=${score}`;
+          window.location.href = `/level7.html?score=${score}`;
         }
       });
 
