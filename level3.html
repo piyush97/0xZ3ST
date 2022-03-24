@@ -145,10 +145,19 @@
     .querySelector(".clickable2")
     .addEventListener("click", function (evt) {
       Swal.fire({
-        title: "Game Over!",
-        text: "Press continue to play again",
+        title: "Correct Answer!",
+        text: "Press continue to play",
         icon: "success",
         confirmButtonText: "continue",
+      }).then((result) => {
+        score = score + 10;
+
+        if (result.isConfirmed) {
+          window.location.href = `/level4.html?score=${score}`;
+        }
+        else if (result.isDenied) {
+          window.location.href = `/level3.html?score=${score}`;
+        }
       });
 
     });
