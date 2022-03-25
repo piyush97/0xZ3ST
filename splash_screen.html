@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Splash Screen</title>
+
+</head>
+ <!-- CSS (Tailwind; utility CDN Call) -->
+ <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 190px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+</style>
+<body>
+  <div class="h-screen absolute bg-black top-0 right-0 bottom-0 left-0 grid text-center place-items-center">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3 class="animate-charcter"> 0xZ3ST</h3>
+      </div>
+      <div>
+        <h2>
+           
+        </h2>
+      </div>
+      <div>
+                
+        <button class="
+          text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        
+       onclick="window.location.href='index.html'">Click Here-></button>
+      </div>
+    </div>
+  </div>
+</html>
