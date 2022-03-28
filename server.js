@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "splash_screen.html"));
 });
 
-app.get("/sign-up", function (req, res) {
+app.get("/signin", function (req, res) {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
 
