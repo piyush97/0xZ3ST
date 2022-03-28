@@ -5,45 +5,23 @@
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
+<!-- CSS (Tailwind; utility CDN Call) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
 <!-- SweetAlert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- events -->
 <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
-<style>
-  .buttons {
-    position: relative;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
 
-  }
-
-  .help-button {
-    padding: 0.25em;
-    border-radius: 4px;
-    margin-left: 5px;
-    border: none;
-    background: white;
-    color: black;
-    height: 2em;
-    cursor: pointer;
-  }
-</style>
 
 <body style="margin: 0px; overflow: hidden">
-  <div class="buttons">
-    <button class="help-button"
+  <div class="relative bottom-0 top-0 left-0 w-full h-20 flex justify-center items-center z-10">
+    <button class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             onclick="help()">Game Instructions</button>
-    <button class="help-button"
+    <button class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             onclick="hint()">Hint</button>
-    <button class="help-button"
+    <button class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             id="score-button"
             style="width:6em;"></p>
   </div>
@@ -91,7 +69,7 @@
 <script>
   let no_of_hint = 0;
   const urlParams = new URLSearchParams(window.location.search);
-  let score = urlParams.get('score');
+  let score = parseInt(urlParams.get('score'));
   let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
   let Swal_hint_title = 'Are you sure!';
   let Swal_hint_warning_text = 'It costs Z3ST points';
@@ -139,7 +117,7 @@
         icon: "error",
         confirmButtonText: "continue",
       });
-      score = score - 10;
+      score -= 10;
     });
 
   sceneEl
@@ -151,7 +129,7 @@
         icon: "success",
         confirmButtonText: "continue",
       }).then((result) => {
-        score = score + 10;
+        score += 10;
 
         if (result.isConfirmed) {
           window.location.href = `/level3.html?score=${score}`;
