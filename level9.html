@@ -8,19 +8,41 @@
 <!-- SweetAlert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- CSS (Tailwind; utility CDN Call) -->
-<script src="https://cdn.tailwindcss.com"></script>
-
 <!-- events -->
 <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
+<style>
+  .buttons {
+    position: relative;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .help-button {
+    padding: 0.25em;
+    border-radius: 4px;
+    margin-left: 5px;
+    border: none;
+    background: white;
+    color: black;
+    height: 2em;
+    cursor: pointer;
+  }
+</style>
 
 <body style="margin: 0px; overflow: hidden">
-  <div class="relative bottom-0 top-0 left-0 w-full h-20 flex justify-center items-center z-10">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+  <div class="buttons">
+    <button class="help-button"
             onclick="help()">Game Instructions</button>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+    <button class="help-button"
             onclick="hint()">Hint</button>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+    <button class="help-button"
             id="score-button"
             style="width:6em;"></p>
   </div>
@@ -29,18 +51,18 @@
     <a-marker preset="hiro">
       <a-text position="0 2 0"
               rotation="0 0 0"
-              value="Which building has a book shop?"
+              value="Place where all the recreational activities take place?"
               geometry="primitive:plane;"
               align="center"
               material="color: #111; opacity: 0.01; transparent: true;"></a-text>
-      <a-text value="Lambton Tower"
+      <a-text value="Erie Hall"
               class="clickable"
               position="0 1 0"
               rotation="0 0 0"
               geometry="primitive:plane"
               align="center"
               material="color: green; opacity: 0.09; transparent: true;"></a-text>
-      <a-text value="CAW"
+      <a-text value="St. Denis Athletic & Community Centre"
               position="0 0 0"
               rotation="0 0 0"
               class="clickable2"
@@ -68,7 +90,7 @@
 <script>
   let no_of_hint = 0;
   const urlParams = new URLSearchParams(window.location.search);
-  let score = parseInt(urlParams.get('score'));
+  let score = urlParams.get('score');
   let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
   let Swal_hint_title = 'Are you sure!';
   let Swal_hint_warning_text = 'It costs Z3ST points';
@@ -123,7 +145,7 @@
     .querySelector(".clickable2")
     .addEventListener("click", function (evt) {
       Swal.fire({
-        title: "Correct Answer!",
+        title: "Game Over!",
         text: "Press continue to play",
         icon: "success",
         confirmButtonText: "continue",
@@ -131,12 +153,13 @@
         score = score + 10;
 
         if (result.isConfirmed) {
-          window.location.href = `/level4.html?score=${score}`;
+          window.location.href = `/level9.html?score=${score}`;
         }
         else if (result.isDenied) {
-          window.location.href = `/level3.html?score=${score}`;
+          window.location.href = `/level9.html?score=${score}`;
         }
       });
+
 
     });
 </script>
