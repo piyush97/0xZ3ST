@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-export default {
+module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -14,7 +14,7 @@ export default {
   // cacheDirectory: "/private/var/folders/5z/nzrkdx1s6vv9pvq41bsssszc0000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances and results before every test
-  // clearMocks: false,
+  clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,

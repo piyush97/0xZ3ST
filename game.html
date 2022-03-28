@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0xz3st</title>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+
+  <!-- UIkit JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
+
+
+  <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+
+  <script
+    src="aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js>https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+
+  <script src="https://rawgit.com/Utopiah/googlepoly-load-component/master/googlepoly-load-component.js"></script>
+
+  <script
+    src="aframe-particle-system-component@^1.0.x/dist/aframe-particle-system-component.min.js>https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.1/dist/aframe-extras.min.js"></script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+  <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.0-alpha-rc1/aframe/build/aframe-ar-nft.js"></script>
+
+  <script src="https://unpkg.com/aframe-event-set-component/dist/aframe-event-set-component.min.js"></script>
+  <style>
+    .buttons {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .help-button {
+      padding: 0.25em;
+      border-radius: 4px;
+      margin-left: 5px;
+      border: none;
+      background: white;
+      color: black;
+      height: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="buttons">
+    <button class="help-button" onClick="help()">Game Instructions</button>
+    <button class="help-button" onClick="hint()">Hint</button>
+    <button class="help-button" id="score-button" disabled style="width:6em;">Score: 0</p>
+  </div>
+  <div id="show-when-clicked"></div>
+  <div id="startContainer" style="z-index: 1" class="uk-padding-large uk-background-secondary">
+
+    <h1 class="uk-heading-primary uk-text-primary">0xZ3ST</h1>
+
+
+    <p class="uk-text-muted">
+      This is the first level of the game, scan the marker and answer
+      correctly to reach next level
+    </p>
+
+    <ol class="uk-margin-medium-top pre">
+
+      <li>Scan the marker and choose the correct option</li>
+
+      <li>Use hints if stuck </li>
+
+      <li>
+        The more you answer correctly, the more you'll be able to
+        explore and the more points you'll get
+      </li>
+
+      <li> In case you're stuck, click help button </li>
+
+    </ol>
+
+
+    <button id="startAR" class="uk-button uk-button-primary uk-button-large uk-margin-top uk-margin-large-bottom">
+      Ready To Start!
+    </button>
+
+
+  </div>
+
+  <div id="patience" class="uk-padding-large">
+    <p id="notification" class="uk-label">
+      Genies are still preparing your next level. <br />
+      Please wait a second before retrying.
+    </p>
+  </div>
+
+  <a-scene id="scene" style="z-index: 0" cursor="rayOrigin: mouse" embedded
+    arjs="sourceType: webcam; debugUIEnabled: false">
+    <a-marker-camera preset="hiro">
+      <!-- loot box -->
+      <a-box id="boxBody" position="0 0.25 0" scale="1.2 0.6 1.2" opacity="0.8" event-set__mouseenter="color: #FFFF84"
+        event-set__mouseleave="color: #FFFFFF;
+                                  position: 0 0.3 0;
+                                  scale: 1.2 0.6 1.2" event-set__mousedown="position: 0 0.15 0;
+                                 scale: 1.2 0.3 1.2" event-set__mouseup="color: #FFFFFF;
+                               position: 0 0.3 0;
+                               scale: 1.2 0.6 1.2">
+      </a-box>
+
+      <a-entity id="boxCover0" position="0.6 0.25 0" rotation="0 0 180">
+        <a-box class="board" position="0.5 0 0" scale="0.8 0.05 1" opacity="0.5">
+        </a-box>
+      </a-entity>
+      <a-entity id="boxCover1" position="-0.6 0.25 0" rotation="0 0 -180">
+        <a-box class="board" position="-0.5 0 0" scale="0.8 0.05 1" opacity="0.5">
+        </a-box>
+      </a-entity>
+      <a-entity id="boxCover2" position="0 0.25 0.6" rotation="-180 0 0">
+        <a-box class="board" position="0 0 0.5" scale="1 0.05 0.8" opacity="0.5">
+        </a-box>
+      </a-entity>
+      <a-entity id="boxCover3" position="0 0.25 -0.6" rotation="180 0 0">
+        <a-box class="board" position="0 0 -0.5" scale="1 0.05 0.8" opacity="0.5">
+        </a-box>
+      </a-entity>
+
+      <!-- effects -->
+      <a-entity id="particles" position="0 0 0"
+        particle-system="enabled: false;
+                               color: #EEFF00, #FF8800;
+                               particleCount: 50;
+                               maxParticleCount: 200;
+                               maxAge: 2;
+                               duration: 1;
+                               velocityValue: 0 5 0;
+                               velocitySpread: 5 5 5;
+                               accelerationSpread: 5 0 5;
+              texture: aframe-particle-system-component@1.0.x/dist/images/star.png>https://unpkg.com/aframe-particle-system-component@1.0.x/dist/images/star.png">
+      </a-entity>
+
+      <a-entity id="plant" visible="false" scale="1.6 1.6 1.6" position="0 0.3 0">
+      </a-entity>
+
+      <a-entity id="book" visible="false" scale="1.6 1.6 1.6" position="0 0.3 0" rotation="6 0 45">
+      </a-entity>
+
+      <a-entity id="books" visible="false" scale="7 7 7" position="0 0.3 0" rotation="0 90 -2">
+      </a-entity>
+
+      <a-entity id="boat" visible="false">
+        <a-entity scale="0.015 0.015 0.015" position="0 0.2 0" rotation="0 180 0">
+        </a-entity>
+        <a-ocean color="#92E2E2" scale="0.12 0.12 0.2" position="0 0.19 0" density="5" speed="2">
+        </a-ocean>
+      </a-entity>
+
+      <a-entity id="lamp" visible="false" scale="1.2 1.2 1.2" position="0 0.3 0" rotation="0 -60 0">
+      </a-entity>
+
+      <a-text id="openInst" value="Click to open" scale="0.6 0.6 0.6" position="-0.4 0.65 0" rotation="-90 0 0"
+        color="#000000" material="side: double"></a-text>
+      <a-text id="closeInst" value="Click to retry" scale="0.6 0.6 0.6" position="-0.4 0.65 0" rotation="-90 0 0"
+        color="#FFFF84" material="side: double"></a-text>
+    </a-marker-camera>
+  </a-scene>
+</body>
+
+</html>
+<script>
+  let no_of_hint = 0;
+  let score = 0;
+  let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
+  let Swal_hint_title = 'Are you sure!';
+  let Swal_hint_warning_text = 'It costs Z3ST points';
+  let Swal_hint_warning_text_button = 'Okay Continue';
+  let question_text = 'This place is the one where you read books!';
+  function hint() {
+    Swal.fire({
+      title: Swal_hint_title,
+      text: Swal_hint_warning_text,
+      icon: 'warning',
+      confirmButtonText: Swal_hint_warning_text_button,
+      showCancelButton: true,
+
+    }).then(
+      (result) => {
+        Swal.fire({
+          title: question_text,
+          confirmButtonText: 'Okay',
+        })
+        no_of_hint += 1;
+        if (no_of_hint == 1) {
+          score -= 10;
+
+        }
+        else if (no_of_hint == 2) {
+          score -= 15;
+        }
+        else if (no_of_hint == 3) {
+          score -= 30;
+
+        }
+        let scoreButton = document.getElementById('score-button').innerText = `Score: ${score}`;
+
+      }
+    )
+    var a = 1;
+    function increase() {
+      var textBox = document.getElementById("text");
+      textBox.value = a;
+      a++;
+    }
+  }
+  let clickdiv;
+  function closeInstructions() {
+    clickdiv = null
+  }
+  function help() {
+    clickdiv = document.getElementById('show-when-clicked').innerHTML = ` <div id="startContainer"
+       style="z-index: 1"
+       class="uk-padding-large uk-background-secondary">
+
+    <h1 class="uk-heading-primary uk-text-primary">0xZ3ST</h1>
+
+
+    <p class="uk-text-muted">
+      This is the first level of the game, scan the marker and answer
+      correctly to reach next level
+    </p>
+
+    <ol class="uk-margin-medium-top pre">
+
+      <li>Scan the marker and choose the correct option</li>
+
+      <li>Use hints if stuck </li>
+
+      <li>
+        The more you answer correctly, the more you'll be able to
+        explore and the more points you'll get
+      </li>
+
+      <li> In case you're stuck, click help button </li>
+
+    </ol>
+
+
+    <button id="close"
+    onClick="closeInstructions()"
+            class="uk-button uk-button-primary uk-button-large uk-margin-top uk-margin-large-bottom">
+      Thanks
+    </button>
+`
+  }
+
+  // box
+  const boxBody = document.querySelector("#boxBody");
+  const boxCovers = [];
+  const boards = document.querySelectorAll(".board");
+  const boxRotations = [];
+  let boxOpen = false;
+  const animToggle = { true: "from", false: "to" };
+  for (let i = 0; i < 4; i++) {
+    boxCovers[i] = document.querySelector("#boxCover" + i);
+    let rotI = boxCovers[i].getAttribute("rotation");
+    boxRotations[i] = rotI.x + " " + rotI.y + " " + rotI.z;
+  }
+
+  // effects
+  const particles = document.querySelector("#particles");
+
+  let curLoot = null;
+  //Will be provided by team members
+  const levelList = [];
+  const level = levelList.length;
+
+  // text
+  const openInst = document.querySelector("#openInst");
+  const closeInst = document.querySelector("#closeInst");
+  closeInst.setAttribute("visible", false);
+
+  // UI
+  const startContainer = document.querySelector("#startContainer");
+  const startAR = document.querySelector("#startAR");
+  const patience = document.querySelector("#patience");
+  patience.style.display = "none";
+
+  let animPlay = true;
+
+  startAR.addEventListener("click", function (evt) {
+    startContainer.style.display = "none";
+  });
+
+  function chooseLevel() {
+    let rand = Math.floor(Math.random() * level);
+    console.log(rand, level);
+    return levelList[rand];
+  }
+
+  function animBox(evt) {
+    if (animPlay) {
+      animPlay = false;
+      window.setTimeout(function () {
+        animPlay = true;
+        patience.style.display = "none";
+      }, 3000);
+    } else {
+      patience.style.display = "block";
+      return;
+    }
+
+    // animate box body
+    if (boxOpen) {
+      boxBody.setAttribute("visible", boxOpen);
+    } else {
+      window.setTimeout(function () {
+        boxBody.setAttribute("visible", !boxOpen);
+        console.log("disappear");
+      }, 500);
+    }
+    boxBody.setAttribute(
+      "animation",
+      "property: opacity; " +
+      animToggle[!boxOpen] +
+      ": 0.8; " +
+      animToggle[boxOpen] +
+      ": 0; dur: 500"
+    );
+
+    // animate box covers
+    boxCovers.forEach(function (el, i) {
+      el.setAttribute(
+        "animation",
+        "property: rotation; " +
+        animToggle[!boxOpen] +
+        ": " +
+        boxRotations[i] +
+        "; " +
+        animToggle[boxOpen] +
+        ": 0 0 0; dur: 500"
+      );
+      boards[i].setAttribute(
+        "animation",
+        "property: color; " +
+        animToggle[!boxOpen] +
+        ": #FFFFFF; " +
+        animToggle[boxOpen] +
+        ": #FFFF84; dur: 500"
+      );
+    });
+
+    // show effects
+    particles.setAttribute("particle-system", "enabled", !boxOpen);
+    openInst.setAttribute("visible", boxOpen);
+    closeInst.setAttribute("visible", !boxOpen);
+
+    if (boxOpen) {
+      curLoot.setAttribute("visible", !boxOpen);
+      curLoot.removeEventListener("click", animBox);
+    } else {
+      curLoot = chooseLevel();
+      curLoot.setAttribute("visible", !boxOpen);
+
+    }
+
+    boxOpen = !boxOpen;
+  }
+
+  // add click listener to texts to accommodate mobile and older aframe version
+  openInst.addEventListener("click", animBox);
+  closeInst.addEventListener("click", animBox);
+
+  boxBody.addEventListener("click", animBox);
+
+</script>

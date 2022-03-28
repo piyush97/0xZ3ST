@@ -1,30 +1,21 @@
 {
-  "name": "oxz3st",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "name": "0xZ3ST",
+  "version": "0.1.0",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "docs": "jsdoc -c config.json ./README.md -d ./docs index.js",
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/piyush97/0xZ3ST.git"
-  },
+  "main": "index.js",
+  "repository": "https://github.com/piyush97/0xZ3ST",
   "author": "Piyush Mehta <me@piyushmehta.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/piyush97/0xZ3ST/issues"
-  },
-  "homepage": "https://github.com/piyush97/0xZ3ST#readme",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.2"
-  },
   "devDependencies": {
-    "jest": "^27.4.7",
-    "nodemon": "^2.0.15"
+    "firebase": "^9.6.7",
+    "jest": "^27.5.1",
+    "jsdoc": "^3.6.10",
+    "rewire": "^6.0.0"
   },
-  "type": "module"
+  "dependencies": {
+    "docdash": "^1.2.0"
+  }
 }
