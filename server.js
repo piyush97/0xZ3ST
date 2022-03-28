@@ -3,13 +3,12 @@ const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 8080;
-/**
- * @description: This is the main server file.
- * @param: none
- * @return: none
- *
- */
-app.get("/", function (req, res) {
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "splash_screen.html"));
+});
+
+app.get("/sign-up", function (req, res) {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
 
