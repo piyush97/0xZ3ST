@@ -30,7 +30,7 @@
     <a-marker preset="hiro">
       <a-text position="0 2 0"
               rotation="0 0 0"
-              value="Which ten-storey building is home to first year students?"
+              value="Which ten storey building is home to first year students?"
               geometry="primitive:plane;"
               align="center"
               material="color: #111; opacity: 0.01; transparent: true;"></a-text>
@@ -40,30 +40,29 @@
               rotation="0 0 0"
               geometry="primitive:plane"
               align="center"
-              material="color: green; opacity: 0.09; transparent: true;"></a-text>
+              material="opacity: 0.09; transparent: true;"></a-text>
       <a-text value="Chrysler Hall"
               position="0 0 0"
               rotation="0 0 0"
               class="clickable2"
               geometry="primitive:plane"
               align="center"
-              material="color: red; opacity: 0.09; transparent: true;"></a-text>
+              material=" opacity: 0.09; transparent: true;"></a-text>
     </a-marker>
     <a-entity camera
               cursor="rayOrigin:mouse"
-              look-controls>
-      <!-- working cursor -->
-      <a-entity look-controls
-                wasd-controls
-                animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-                animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
-                animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
-                cursor="fuse: false; fuseTimeout: 500"
-                position="0 0 -1"
-                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                material="color: gray; shader: flat; opacity: 1">
-      </a-entity>
-    </a-entity>
+              look-controls
+              position="0 0 -1"
+              mouse-cursor></a-entity>
+    <!-- working cursor -->
+    <a-cursor look-controls
+              wasd-controls
+              cursor="fuse: false;"
+              cursor="rayOrigin:mouse"
+              position="0 0 -1"
+              geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+              material="color: gray; shader: flat; opacity: 1">
+    </a-cursor>
   </a-scene>
 </body>
 <script>
@@ -74,7 +73,8 @@
   let Swal_hint_title = 'Are you sure!';
   let Swal_hint_warning_text = 'It costs Z3ST points';
   let Swal_hint_warning_text_button = 'Okay Continue';
-  let question_text = 'This is where hints will come';
+  let question_text = "It's a car brand name!";
+
   function hint() {
     Swal.fire({
       title: Swal_hint_title,

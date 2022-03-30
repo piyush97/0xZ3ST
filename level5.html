@@ -50,18 +50,18 @@
     </a-marker>
     <a-entity camera
               cursor="rayOrigin:mouse"
-              look-controls>
-      <!-- working cursor -->
-      <a-entity look-controls
-                wasd-controls
-                animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-                animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
-                animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
-                cursor="fuse: false; fuseTimeout: 500"
-                position="0 0 -1"
-                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                material="color: gray; shader: flat; opacity: 1">
-      </a-entity>
+              look-controls
+              position="0 0 -1"
+              mouse-cursor></a-entity>
+    <!-- working cursor -->
+    <a-cursor look-controls
+              wasd-controls
+              cursor="fuse: false;"
+              cursor="rayOrigin:mouse"
+              position="0 0 -1"
+              geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+              material="color: gray; shader: flat; opacity: 1">
+    </a-cursor>
     </a-entity>
   </a-scene>
 </body>
@@ -73,7 +73,7 @@
   let Swal_hint_title = 'Are you sure!';
   let Swal_hint_warning_text = 'It costs Z3ST points';
   let Swal_hint_warning_text_button = 'Okay Continue';
-  let question_text = 'This is where hints will come';
+  let question_text = 'The place has two music practice rooms';
   function hint() {
     Swal.fire({
       title: Swal_hint_title,
@@ -112,7 +112,7 @@
     .addEventListener("click", function (evt) {
       Swal.fire({
         title: "Wrong Answer!",
-        text: "Students get their uWincard from there",
+        text: "The place has two music practice rooms",
         icon: "error",
         confirmButtonText: "continue",
       });
