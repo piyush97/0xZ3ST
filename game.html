@@ -74,6 +74,15 @@
   let Swal_hint_warning_text_button = 'Okay Continue';
   let question_text = 'This is where hints will come';
   scoreButton.innerText = "Score: " + score;
+
+  /**
+   * @description This function is called when the user clicks on the hint button.
+   * It will check if the user has enough points to use the hint.
+   * If the user has enough points, it will deduct the points and display a hint.
+   * If the user does not have enough points, it will display a warning message.
+   * @param {event} event
+   * @returns {void}
+   */
   function hint() {
     Swal.fire({
       title: Swal_hint_title,
@@ -105,7 +114,13 @@
       }
     )
   }
-
+  /**
+   * @description This function is called when the user clicks on the answer button.
+   * It will display a modal with the reply.
+   * @param {event} event
+   * @returns {void}
+   * @author Piyush
+   */
   var sceneEl = document.querySelector("a-scene");
   sceneEl
     .querySelector(".clickable")
