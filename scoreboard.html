@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+  <style>
+
+    .table {
+    border-spacing: 0 15px;
+  }
+
+  i {
+    font-size: 1rem !important;
+  }
+
+  .table tr {
+    border-radius: 20px;
+  }
+
+  tr td:nth-child(n + 6),
+  tr th:nth-child(n + 6) {
+    border-radius: 0 0.625rem 0.625rem 0;
+  }
+
+  tr td:nth-child(1),
+  tr th:nth-child(1) {
+    border-radius: 0.625rem 0 0 0.625rem;
+  }
+
+</style>
+  
+<!-- component -->
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet"
+/>
+</head>
+
+<body>
+  <div class="flex items-center justify-center min-h-screen bg-white">
+    <div class="col-span-12">
+      <div class="overflow-auto lg:overflow-visible">
+        <div class="flex lg:justify-between border-b-2 border-fuchsia-900 pb-1">
+          <h2 class="text-2xl text-gray-500 font-bold">Score Board</h2>
+  
+        </div>
+        <table class="table text-gray-400 border-separate space-y-6 text-sm">
+          <thead class="bg-purple-500 text-white">
+            <tr>
+              <th class="p-3">Name</th>
+              <th class="p-3 text-left">Scores</th>
+              <th class="p-3 text-left">Email</th>
+              <th class="p-3 text-left">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+        
+            <tr class="bg-purple-200 lg:text-black">
+              <td class="p-3 font-medium capitalize">Gazi Rahad</td>
+              <td class="p-3">20</td>
+              <td class="p-3 uppercase">gazi.rahad871@gmail.com</td>
+  
+              <td class="p-3">
+                <span class="bg-green-400 text-gray-50 rounded-md px-2"
+                  >ACTIVE</span
+                >
+              </td>
+            </tr>
+         <tr class="bg-purple-200 lg:text-black">
+              <td class="p-3 font-medium capitalize">Arif Uddin</td>
+              <td class="p-3">30</td>
+              <td class="p-3 uppercase">gazi.rahad871@gmail.com</td>
+  
+              <td class="p-3">
+                <span class="bg-green-400 text-gray-50 rounded-md px-2"
+                  >ACTIVE</span
+                >
+              </td>
+            </tr>
+               <tr class="bg-purple-200 lg:text-black">
+              <td class="p-3 font-medium capitalize">Rubel Amin</td>
+              <td class="p-3">40</td>
+              <td class="p-3 uppercase">gazi.rahad871@gmail.com</td>
+  
+              <td class="p-3">
+                <span class="bg-green-400 text-gray-50 rounded-md px-2"
+                  >ACTIVE</span
+                >
+              </td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+</body>
+</html>
