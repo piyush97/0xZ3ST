@@ -3,15 +3,13 @@
  * Initialize Firebase with the config.
  */
 var firebaseConfig = {
-  // Paste credentials here
-  apiKey: "AIzaSyBwfedFiujEhQ7Gh66ogiTiY0b4nYSEEmI",
-  authDomain: "test-6bd3b.firebaseapp.com",
-  databaseURL: "https://test-6bd3b-default-rtdb.firebaseio.com",
-  projectId: "test-6bd3b",
-  storageBucket: "test-6bd3b.appspot.com",
-  messagingSenderId: "550518875120",
-  appId: "1:550518875120:web:535d72aeda84693f187335",
-  measurementId: "G-T0D12W1CJG",
+  apiKey: "AIzaSyDkm-YnLfscDAm9XbDhOKiAgLHJVZXE5k0",
+  authDomain: "xz3st-piyush97.firebaseapp.com",
+  projectId: "xz3st-piyush97",
+  storageBucket: "xz3st-piyush97.appspot.com",
+  messagingSenderId: "400768516912",
+  appId: "1:400768516912:web:00a54a09f6be4ac62cbef5",
+  measurementId: "G-C0979WFBGT",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
