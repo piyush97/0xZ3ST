@@ -34,3 +34,5 @@ Considering the target audience mainly consisting of young users , the platform 
 <img src="https://i.ibb.co/VCyK2mR/5.png" alt="5" border="0">
 <img src="https://i.ibb.co/qJPkCX4/6.png" alt="6" border="0">
 <img src="https://i.ibb.co/HhsS7zS/7.png" alt="7" border="0">
+
+https://pmc.cs.uwindsor.ca/jira/secure/RapidBoard.jspa?projectKey=CP8117P41&useStoredSettings=true&rapidView=65
